@@ -1,0 +1,18 @@
+# Molecule managed
+
+---
+command:
+  hostname:
+    exit-status: 0
+    stdout:
+      - "jamie-pc"
+
+file:
+  /etc/hosts:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+    contains:
+      - "127.0.0.1 jamie-pc.localdomain jamie-pc"
