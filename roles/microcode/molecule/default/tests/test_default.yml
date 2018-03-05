@@ -1,0 +1,6 @@
+# Molecule managed
+
+---
+package:
+  intel-ucode:
+    installed: true
