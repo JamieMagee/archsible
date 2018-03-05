@@ -1,0 +1,17 @@
+# Molecule managed
+
+---
+file:
+  /boot/initramfs-linux.img:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
+
+  /boot/initramfs-linux-fallback.img:
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    filetype: file
