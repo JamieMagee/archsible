@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
-  become: yes
+  become: "yes"
   roles:
     - { role: timezone, tags: ['timezone'] }
+    - { role: locale, tags: ['locale'] }
