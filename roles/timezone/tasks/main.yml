@@ -1,0 +1,5 @@
+---
+# tasks file for timezone
+- name: Set the timezone
+  timezone: hwclock={{ timezone.hwclock }} name={{ timezone.region }}/{{ timezone.city }}
+  become: yes

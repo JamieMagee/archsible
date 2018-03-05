@@ -1,0 +1,5 @@
+---
+timezone:
+  hwclock: UTC
+  region: Europe
+  city: Copenhagen

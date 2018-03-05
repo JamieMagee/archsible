@@ -1,0 +1,6 @@
+# Molecule managed
+
+---
+file:
+  /etc/localtime:
+    exists: true
