@@ -2,8 +2,4 @@
 - name: Prepare
   hosts: all
   gather_facts: false
-  tasks:
-    - name: Install python for Ansible
-      raw: test -e /usr/bin/python2 || pacman -S python2 --no-confirm
-      become: true
-      changed_when: false
+  tasks: []

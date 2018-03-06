@@ -2,14 +2,12 @@
 dependency:
   name: galaxy
 driver:
-  name: vagrant
-  provider:
-    name: virtualbox
+  name: docker
 lint:
   name: yamllint
 platforms:
   - name: instance
-    box: terrywang/archlinux
+    image: base/archlinux
 provisioner:
   name: ansible
   lint:
