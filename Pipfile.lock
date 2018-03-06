@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "82a0d054495d5b34a9925fa361470b1cd246f4429465d785d9c1ef631b31d279"
+            "sha256": "86da7aff4102a035495987776ce9359860b798a49d9928bc5df99edaab051442"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -358,7 +358,6 @@
                 "sha256:3c85641778460581c42924384f5e68076d724ceac0f267d66c757f7535069c93",
                 "sha256:e90f17980e6ab0f3c2f3730e56d1fe9bcba1891eeea58966e89d352492cc74f4"
             ],
-            "markers": "platform_python_implementation != 'PyPy'",
             "version": "==1.11.5"
         },
         "chardet": {
@@ -426,10 +425,10 @@
         },
         "docker": {
             "hashes": [
-                "sha256:651c6feea03f5f12c823d3adc1db34ecf21e05965908e580d1b651b8c2269e9e",
-                "sha256:462165ca6367f802280684ab44e581cd2efba8995d78d07ea994e42194927c3b"
+                "sha256:c1d4e37b1ea03b2b6efdd0379640f6ea372fefe56efa65d4d17c34c6b9d54558",
+                "sha256:144248308e8ea31c4863c6d74e1b55daf97cc190b61d0fe7b7313ab920d6a76c"
             ],
-            "version": "==3.1.1"
+            "version": "==2.7.0"
         },
         "docker-pycreds": {
             "hashes": [
