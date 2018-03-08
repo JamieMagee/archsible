@@ -5,7 +5,7 @@ command:
   hostname:
     exit-status: 0
     stdout:
-      - "jamie-pc"
+      - "molecule"
 
 file:
   /etc/hosts:
@@ -15,4 +15,4 @@ file:
     group: root
     filetype: file
     contains:
-      - "127.0.0.1 jamie-pc.localdomain jamie-pc"
+      - "127.0.0.1 molecule.localdomain molecule"

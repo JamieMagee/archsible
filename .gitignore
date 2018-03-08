@@ -127,3 +127,4 @@ venv.bak/
 # End of https://www.gitignore.io/api/linux,python,ansible,vagrant
 
 .molecule/
+host_vars/localhost

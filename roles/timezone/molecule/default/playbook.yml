@@ -4,3 +4,8 @@
   become: "yes"
   roles:
     - role: timezone
+  vars:
+    timezone:
+      hwclock: UTC
+      region: Europe
+      city: Copenhagen

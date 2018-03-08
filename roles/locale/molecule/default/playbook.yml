@@ -3,3 +3,8 @@
   hosts: all
   roles:
     - role: locale
+  vars:
+    locale:
+      system: en_GB.UTF-8
+      generate:
+        - en_GB.UTF-8
