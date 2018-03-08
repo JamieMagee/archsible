@@ -9,8 +9,8 @@ services:
 
 install:
   - pip install pipenv
-  - pipenv install --dev
+  - pipenv install --dev --system --skip-lock
 
 before_script: chmod +x test-docker.sh
 
-script: pipenv run ./test-docker.sh
+script: ./test-docker.sh
