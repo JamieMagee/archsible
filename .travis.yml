@@ -14,6 +14,6 @@ install:
 
 before_script: chmod +x test-docker.sh
 
-script: 
+script:
   - yamllint .
   - ./test-docker.sh
