@@ -10,4 +10,4 @@
   vars_prompt:
     - name: hostname
       prompt: "Enter the desired hostname"
-      private: no
+      private: "no"
