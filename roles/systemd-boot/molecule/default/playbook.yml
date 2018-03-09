@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  become: "yes"
+  roles:
+    - role: systemd-boot
+  vars:
+    systemd:
+      boot:
+        root_device: /dev/fs/root
+
+---

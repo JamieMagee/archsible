@@ -9,4 +9,8 @@ locale:
     generate:
         - en_GB.UTF-8
 
-hostname: arch-ansible
+hostname: archsible
+
+systemd:
+    boot:
+      root_device: /dev/fs/root
