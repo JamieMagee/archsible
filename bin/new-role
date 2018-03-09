@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-set -x
 
 echo Enter a new role name
 read -r role_name
