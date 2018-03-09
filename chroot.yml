@@ -7,6 +7,7 @@
     - { role: hostname, tags: ['hostname'], when: "hostname is defined and hostname != ''" }
     - { role: mkinitcpio, tags: ['mkinitcpio'] }
     - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
+    - { role: systemd-boot, tags: ['systemd-boot'] }
   vars_prompt:
     - name: hostname
       prompt: "Enter the desired hostname"
