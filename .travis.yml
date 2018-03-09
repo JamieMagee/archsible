@@ -16,4 +16,4 @@ before_script: chmod +x test-docker.sh
 
 script:
   - yamllint .
-  - ./test-docker.sh
+  - bin/test-docker
