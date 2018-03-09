@@ -12,8 +12,6 @@ install:
   - pip install pipenv
   - pipenv install --dev --system --skip-lock
 
-before_script: chmod +x test-docker.sh
-
 script:
   - yamllint .
   - bin/test-docker
