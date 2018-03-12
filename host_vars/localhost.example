@@ -25,4 +25,7 @@ fisherman:
     - tuvistavie/fish-ssh-agent
     - pipenv
     - gitignore
-    - bass
+    - edc/bass
+    - laughedelic/pisces
+    - laughedelic/fish_logo
+    - hash
