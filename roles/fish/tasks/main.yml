@@ -1,0 +1,12 @@
+---
+- name: Install fish shell
+  pacman: name=fish state=present
+
+- name: Install fisherman
+  aur: name=fisherman user={{ user.name }}
+
+- name: Install fisherman packages
+  become: "yes"
+  become_user: "{{ user.name }}"
+  with_items: "{{ fisherman.packages }}"
+  command: /usr/bin/fish -c 'fisher "{{ item }}"'

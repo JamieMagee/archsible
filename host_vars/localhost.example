@@ -14,3 +14,15 @@ hostname: archsible
 systemd:
     boot:
       root_device: /dev/fs/root
+
+user:
+  name: archsible
+
+fisherman:
+  packages:
+    - omf/theme-bobthefish
+    - omf/bang-bang
+    - tuvistavie/fish-ssh-agent
+    - pipenv
+    - gitignore
+    - bass
