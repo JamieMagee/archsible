@@ -2,6 +2,6 @@
 - import_playbook: chroot.yml
 
 - hosts: localhost
-  become: yes
+  become: "yes"
   roles:
     - { role: fish, tags: ['fish'] }

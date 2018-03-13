@@ -1,8 +1,10 @@
 # Molecule managed
 
 ---
+package:
+  fish:
+    installed: true
+
 file:
-  /etc/hosts:
+  /usr/share/fish/functions/fisher.fish:
     exists: true
-    owner: root
-    group: root
