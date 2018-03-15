@@ -32,4 +32,17 @@ fisherman:
 
 vscode:
   extensions:
+    - DavidAnson.vscode-markdownlint
+    - Orta.vscode-jest
+    - TeddyDD.fish
+    - eamodio.gitlens
+    - eg2.tslint
+    - esbenp.prettier-vscode
+    - jithurjacob.nbpreviewer
+    - lunaryorn.fish-ide
+    - ms-azuretools.vscode-azurefunctions
+    - ms-python.python
     - ms-vscode.azure-account
+    - ms-vscode.csharp
+    - ms-vscode.mono-debug
+    - ms-vscode.PowerShell
