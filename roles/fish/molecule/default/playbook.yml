@@ -4,3 +4,5 @@
   roles:
     - role: fish
   vars:
+    user:
+      name: archsible
