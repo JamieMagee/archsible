@@ -1,0 +1,10 @@
+---
+- name: Install vscode
+  aur: name=visual-studio-code-bin user={{ user.name }}
+
+- name: install extensions
+  become_user: "{{ user.name }}"
+  with_items: "{{ vscode.extensions }}"
+  command: "code --install-extension '{{ item }}'"
+  register: vscode_result
+  changed_when: "'already installed' not in vscode_result.stdout"

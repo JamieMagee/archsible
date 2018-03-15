@@ -1,0 +1,10 @@
+# Molecule managed
+
+---
+package:
+  visual-studio-code-bin:
+    installed: true
+
+command:
+  sudo --user archsible -H code --install-extension ms-python.python:
+    stdout: "already installed"

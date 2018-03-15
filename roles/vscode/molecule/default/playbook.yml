@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: vscode
+  vars:
+    vscode:
+      extensions:
+        - ms-python.python

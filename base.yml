@@ -1,7 +1,8 @@
 ---
-- import_playbook: chroot.yml
+#- import_playbook: chroot.yml
 
 - hosts: localhost
   become: "yes"
   roles:
     - { role: fish, tags: ['fish'] }
+    - { role: vscode, tags: ['vscode'] }

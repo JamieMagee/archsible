@@ -29,3 +29,7 @@ fisherman:
     - laughedelic/pisces
     - laughedelic/fish_logo
     - hash
+
+vscode:
+  extensions:
+    - ms-vscode.azure-account
