@@ -11,7 +11,7 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 
 ## Installation
 
-1. Copy `host_vars/localhost.example` to `host_vars.localhost`
+1. Copy `host_vars/localhost.example` to `host_vars/localhost`
 2. Edit `localhost` for your own setup
 3. Run `ansible-playbook <playbook>.yml`
 
