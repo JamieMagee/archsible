@@ -18,6 +18,6 @@ ansible = "*"
 [dev-packages]
 
 python-vagrant = "*"
-docker = "<3.0.0"
+docker = "<4.0.0"
 molecule = "*"
 yamllint = "*"
