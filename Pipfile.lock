@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "54a617fcd1361af824a8c813982411083f808dff24eba28fbcc3caefd34182d6"
+            "sha256": "7cfa79a136bf9077c1fd90252d4d7bb0f36774058f8ab975b5abee908aa66177"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -448,10 +448,11 @@
         },
         "docker": {
             "hashes": [
-                "sha256:144248308e8ea31c4863c6d74e1b55daf97cc190b61d0fe7b7313ab920d6a76c",
-                "sha256:c1d4e37b1ea03b2b6efdd0379640f6ea372fefe56efa65d4d17c34c6b9d54558"
+                "sha256:753251b142d56f243fba53ba321a37740a6b6583c528437f45df4d28ba3d4d5d",
+                "sha256:add59251aa15a54c49d1514d576718d762ea5e3d79c2616b6dfaa3fad8d4c9fe"
             ],
-            "version": "==2.7.0"
+            "index": "pypi",
+            "version": "==3.1.4"
         },
         "docker-pycreds": {
             "hashes": [
