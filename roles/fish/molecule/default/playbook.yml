@@ -1,4 +1,24 @@
 ---
+- name: Prepare
+  hosts: all
+  tasks:
+    - name: Make sure we have a 'wheel' group
+      group:
+        name: wheel
+    - name: Allow 'wheel' group to have passwordless sudo
+      lineinfile:
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+    - name: create 'archsible' user required for test
+      user:
+        name: archsible
+        groups: wheel
+    - name: Install base-devel for authorized_key
+      pacman: name=base-devel
+
 - name: Converge
   hosts: all
   roles:
@@ -6,3 +26,6 @@
   vars:
     user:
       name: archsible
+    fisherman:
+      packages:
+        - omf/theme-bobthefish
