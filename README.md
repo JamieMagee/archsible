@@ -1,6 +1,6 @@
 # Archsible
 
-[![Build Status](https://travis-ci.org/JamieMagee/arch-ansible.svg?branch=master)](https://travis-ci.org/JamieMagee/arch-ansible)
+[![Build Status](https://travis-ci.org/JamieMagee/archsible.svg?branch=master)](https://travis-ci.org/JamieMagee/archsible)
 
 Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [Arch Linux](https://www.archlinux.org/).
 
