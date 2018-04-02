@@ -12,8 +12,6 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
-  env:
-    ANSIBLE_LIBRARY: ../../../../library/ansible-aur
 scenario:
   name: default
 verifier:

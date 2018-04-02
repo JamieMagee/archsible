@@ -1,22 +1,16 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [requires]
-
 python_version = '2.7'
 
-
 [packages]
-
 ansible = "*"
-
+passlib = "*"
 
 [dev-packages]
-
 python-vagrant = "*"
 docker = "<3.0.0"
 molecule = "*"

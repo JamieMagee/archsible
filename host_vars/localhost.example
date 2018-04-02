@@ -17,11 +17,30 @@ systemd:
 
 user:
   name: archsible
+  uid: 1000
+  group: archsible
+  email: archsible@archsible.com
+  log:
+      dir: log
+      rotate: 8
 
 fisherman:
   packages:
     - omf/theme-bobthefish
 
+base_packages:
+    - base-devel
+
+passwordless_sudo:
+  - /usr/bin/docker
+
+dotfiles: https://github.com/archsible/dotfiles.git
+
+aur:
+    dir: aur
+    packages:
+      - pikaur-git
+
 vscode:
   extensions:
-    - ms-python.python
+    - ms-vscode.azure-account

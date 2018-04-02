@@ -4,5 +4,5 @@
 - hosts: localhost
   become: "yes"
   roles:
-    - { role: fish, tags: ['fish'] }
+    - { role: base, tags: ['base'] }
     - { role: vscode, tags: ['vscode'] }
