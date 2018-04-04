@@ -46,14 +46,19 @@
     - packages
 
 - name: Push pacman cache cleanup timer
-  copy: src=paccache.timer dest=/etc/systemd/system/paccache.timer
+  copy:
+    src: paccache.timer
+    dest: /etc/systemd/system/paccache.timer
   notify:
-    - reload systemd config
     - restart paccache
   tags:
     - packages
 
 - name: Enable and start pacman cache cleanup timer
-  service: name=paccache.timer enabled=yes state=started
+  systemd:
+    name: paccache.timer
+    enabled: "yes"
+    state: started
+    daemon_reload: "yes"
   tags:
     - packages

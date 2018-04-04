@@ -11,6 +11,6 @@
     - user
 
 - name: Copy sudo configuration
-  template: src=sudoers.j2 dest=/etc/sudoers mode=440 validate='visudo -cf %s'
+  template: src=sudoers.j2 dest=/etc/sudoers mode=0440 validate='visudo -cf %s'
   tags:
     - sudo
