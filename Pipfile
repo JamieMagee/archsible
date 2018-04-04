@@ -12,4 +12,4 @@ passlib = "*"
 
 [dev-packages]
 yamllint = "*"
-ansible-lint = "==3.5.0rc1"
+ansible-lint = "*"
