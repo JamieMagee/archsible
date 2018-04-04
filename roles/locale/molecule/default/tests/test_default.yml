@@ -1,8 +1,0 @@
-# Molecule managed
-
----
-command:
-  locale -a:
-    exit-status: 0
-    stdout:
-      - en_GB.utf8

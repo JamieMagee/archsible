@@ -1,8 +1,0 @@
-# Molecule managed
-
----
-file:
-  /etc/localtime:
-    exists: true
-    filetype: symlink
-    linked-to: ../usr/share/zoneinfo/Europe/Copenhagen

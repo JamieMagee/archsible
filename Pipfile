@@ -11,7 +11,5 @@ ansible = "*"
 passlib = "*"
 
 [dev-packages]
-python-vagrant = "*"
-docker = "<3.0.0"
-molecule = "*"
 yamllint = "*"
+ansible-lint = "==3.5.0rc1"

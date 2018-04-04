@@ -1,12 +1,7 @@
 ---
-sudo: required
-
 language: python
 python:
   - "2.7"
-
-services:
-  - docker
 
 install:
   - pip install pipenv
@@ -14,4 +9,4 @@ install:
 
 script:
   - yamllint .
-  - bin/test-docker
+  - ansible-lint base.yml

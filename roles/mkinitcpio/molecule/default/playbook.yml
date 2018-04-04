@@ -1,9 +1,0 @@
----
-- name: Converge
-  hosts: all
-  become: "yes"
-  roles:
-    - role: mkinitcpio
-  vars:
-    mkinitcpio:
-      hooks: "base udev autodetect block filesystems"
