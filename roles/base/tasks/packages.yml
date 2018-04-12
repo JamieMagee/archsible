@@ -40,8 +40,6 @@
 
 - name: Push pacman cache cleanup service
   copy: src=paccache.service dest=/etc/systemd/system/paccache.service
-  notify:
-    - reload systemd config
   tags:
     - packages
 
