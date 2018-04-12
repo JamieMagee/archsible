@@ -9,7 +9,7 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 
 ## Requirements
 
-* [python2](https://www.archlinux.org/packages/?name=python2)
+* [python](https://www.archlinux.org/packages/?name=python)
 * [python-pipenv](https://www.archlinux.org/packages/?name=python-pipenv)
 
 ## Installation
