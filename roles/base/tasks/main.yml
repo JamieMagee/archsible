@@ -5,8 +5,8 @@
 - name: Refresh pacman mirrors
   pacman: update_cache=yes
 
-- include: shell.yml
 - include: user.yml
+- include: shell.yml
 - include: sudo.yml
 - include: packages.yml
 - include: journal.yml
