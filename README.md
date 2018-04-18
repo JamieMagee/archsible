@@ -18,7 +18,8 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 2.  Edit `localhost` for your own setup
 3.  Install the dependencies `pipenv install`
 4.  Activate the virtualenv `pipenv shell`
-5.  Run `ansible-playbook <playbook>.yml`
+5.  Navigate to the `playbooks` directory
+6.  Run `ansible-playbook <playbook>.yml`
 
 ## Development
 
