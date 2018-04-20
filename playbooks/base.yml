@@ -5,9 +5,6 @@
     - { role: base, tags: ['base'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: dotfiles, tags: ['dotfiles'] }
-  vars:
-    yadm:
-      class: work
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"

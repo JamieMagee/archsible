@@ -1,0 +1,8 @@
+---
+- import_playbook: base.yml
+
+- hosts: localhost
+  become: "yes"
+  vars:
+    yadm:
+      class: home
