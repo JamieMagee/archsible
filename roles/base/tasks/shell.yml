@@ -1,9 +1,13 @@
 ---
 - name: Install fish shell
-  pacman: name=fish state=present
+  pacman:
+    name: fish
+    state: present
 
 - name: Install fisherman
-  aur: name=fisherman user={{ user.name }}
+  aur:
+    name: fisherman
+    user: {{ user.name }}
 
 - name: Install fisherman packages
   become: "true"

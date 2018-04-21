@@ -1,6 +1,7 @@
 ---
 - name: Set the hostname for the current session
-  hostname: name={{ hostname }}
+  hostname:
+    name: {{ hostname }}
 
 - name: Set system hostname entry in the hosts file
   lineinfile:

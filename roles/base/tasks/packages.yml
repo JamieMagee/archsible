@@ -1,45 +1,58 @@
 ---
 - name: Install universal base packages
-  pacman: name={{ item }} state=present
+  pacman: 
+    name: {{ item }}
+    state: present
   with_items: "{{ base_packages }}"
   tags:
     - packages
 
 - name: Create pacman hook directory
-  file: path=/etc/pacman.d/hooks
-        state=directory
+  file:
+    path: /etc/pacman.d/hooks
+    state: directory
   tags:
     - packages
 
 - name: Push pacman mirror list update hook
-  copy: src=mirrorlist.hook dest=/etc/pacman.d/hooks/mirrorlist.hook
+  copy:
+    src: mirrorlist.hook
+    dest: /etc/pacman.d/hooks/mirrorlist.hook
   tags:
     - packages
 
 - name: Create AUR directory
-  file: path=/home/{{ user.name }}/{{ aur.dir }}
-        state=directory
-        owner={{ user.name }}
-        group={{ user.group }}
+  file:
+    path: /home/{{ user.name }}/{{ aur.dir }}
+    state: directory
+    owner: {{ user.name }}
+    group: {{ user.group }}
   tags:
     - aur
     - packages
 
 - name: Install cower
-  aur: name=cower user={{ user.name }} skip_pgp=yes
+  aur: 
+    name: cower
+    user: {{ user.name }}
+    skip_pgp: yes
   tags:
     - aur
     - packages
 
 - name: Install AUR base packages
-  aur: name={{ item }} user={{ user.name }}
+  aur: 
+    name: {{ item }}
+    user: {{ user.name }}
   with_items: "{{ aur.packages }}"
   tags:
     - aur
     - packages
 
 - name: Push pacman cache cleanup service
-  copy: src=paccache.service dest=/etc/systemd/system/paccache.service
+  copy:
+    src: paccache.service
+    dest: /etc/systemd/system/paccache.service
   tags:
     - packages
 

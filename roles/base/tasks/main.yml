@@ -1,9 +1,12 @@
 ---
 - name: Copy pacman configuration file
-  copy: src=pacman.conf dest=/etc/pacman.conf
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf
 
 - name: Refresh pacman mirrors
-  pacman: update_cache=yes
+  pacman: 
+    update_cache: yes
 
 - include: user.yml
 - include: shell.yml

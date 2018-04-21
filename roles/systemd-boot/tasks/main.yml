@@ -1,6 +1,7 @@
 ---
 - name: systemd-boot binary
-  stat: path=/boot/EFI/systemd/systemd-bootx64.efi
+  stat:
+    path: /boot/EFI/systemd/systemd-bootx64.efi
   register: systemdboot
 
 - name: Install systemd-boot binaries
@@ -8,7 +9,13 @@
   when: systemdboot.stat.exists == False
 
 - name: Copy systemd-boot loader configuration
-  copy: src=loader.conf dest=/boot/loader/loader.conf mode=0644
+  copy:
+    src: loader.conf
+    dest: /boot/loader/loader.conf
+    mode: 0644
 
 - name: Copy systemd-boot entry configuration
-  template: src=arch.conf.j2 dest=/boot/loader/entries/arch.conf mode=0644
+  template:
+    src: arch.conf.j2
+    dest: /boot/loader/entries/arch.conf
+    mode: 0644
