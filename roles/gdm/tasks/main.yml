@@ -6,26 +6,31 @@
   with_items:
     - plymouth
     - gdm-plymouth
+    - plymouth-theme-arch-logo
 
 - name: Enable Plymouth GDM
   systemd:
     name: gdm-plymouth.service
     enabled: true
 
-- name: Test Plymouth hook
-  command: grep "HOOKS=(base udev plymouth" /etc/mkinitcpio.conf
-  register: plymouth
-  changed_when: false
-
-- name: Install plymouth hook
+- name: Install Plymouth hook
   replace:
     path: /etc/mkinitcpio.conf
-    regex: HOOKS=(base udev
+    regexp: HOOKS=\(base udev (?!plymouth)
     replace: HOOKS=(base udev plymouth
   notify: mkinitcpio
-  when: plymouth.rc == 1
 
-- name: Install Plymouth settings
-  copy:
-    src: plymouthd.conf
-    dest: /etc/plymouth/plymouthd.conf
+- name: Test current Plymouth theme
+  command: plymouth-set-default-theme
+  register: plymouth_theme
+  changed_when: false
+
+- name: Set plymouth theme
+  command: plymouth-set-default-theme arch-logo -R
+  when: plymouth_theme.stdout != 'arch-logo'
+
+- name: Enable quiet boot
+  replace:
+    path: /boot/loader/entries/arch.conf
+    regexp: '(^options(\s+(?!quiet splash udev\.log_priority=3)[\w=\-\.\,\_]+)*)\s*$'
+    replace: '\1 quiet splash udev.log_priority=3'
