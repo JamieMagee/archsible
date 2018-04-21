@@ -1,0 +1,65 @@
+---
+- name: Install OpenSSH
+  pacman:
+    name: openssh
+    state: present
+
+- name: Push OpenSSH daemon configuration file
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+
+- name: Create OpenSSH systemd unit file directory
+  file:
+    path: /etc/systemd/system/sshd.socket.d
+    state: directory
+
+- name: Push OpenSSH socket unit file
+  template:
+    src: sshd-socket-override.conf.j2
+    dest: /etc/systemd/system/sshd.socket.d/override.conf
+  notify:
+    - restart sshd
+
+- name: Enable and start OpenSSH
+  systemd:
+    name: sshd.socket
+    enabled: true
+    state: started
+    daemon_reload: true
+  when: ssh.enable_sshd == True
+
+- name: Disable and stop OpenSSH
+  systemd:
+    name: sshd.socket
+    enabled: false
+    state: stopped
+    daemon_reload: true
+  when: ssh.enable_sshd == False
+
+- name: Copy fuse configuration file
+  copy:
+    src: fuse.conf
+    dest: /etc/fuse.conf
+
+- name: Install keychain
+  pacman:
+    name: keychain
+    state: present
+
+- name: Make directory for user SSH key
+  file:
+    path: /home/{{ user.name }}/.ssh
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+
+- name: Install user SSH key
+  copy:
+    content: "{{ item.content }}"
+    dest: /home/{{ user.name }}/.ssh/{{ item.name }}
+    mode: 0600
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
+  when: ssh.keys is defined
+  with_items: "{{ ssh.key }}"

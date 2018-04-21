@@ -1,10 +1,11 @@
 ---
 - hosts: localhost
-  become: "yes"
+  become: true
   roles:
     - { role: base, tags: ['base'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: dotfiles, tags: ['dotfiles'] }
+    - { role: ssh, tags: ['ssh'] }
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
