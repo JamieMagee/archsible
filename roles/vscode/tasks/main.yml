@@ -5,7 +5,7 @@
     user: {{ user.name }}
 
 - name: install extensions
-  become: "true"
+  become: true
   become_user: "{{ user.name }}"
   with_items: "{{ vscode.extensions }}"
   command: "code --install-extension '{{ item }}'"

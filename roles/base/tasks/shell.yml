@@ -10,7 +10,7 @@
     user: {{ user.name }}
 
 - name: Install fisherman packages
-  become: "true"
+  become: true
   become_user: "{{ user.name }}"
   with_items: "{{ fisherman.packages }}"
   command: /usr/bin/fish -c 'fisher "{{ item }}"'

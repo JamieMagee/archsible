@@ -2,7 +2,7 @@
 - name: Modify locale generation file
   lineinfile:
     path: /etc/locale.gen
-    backrefs: "yes"
+    backrefs: true
     regexp: "^#{{ item }}(.*)"
     line: "{{ item }}\\1"
   with_items: "{{ locale.generate }}"
@@ -12,5 +12,5 @@
   lineinfile:
     path: /etc/locale.conf
     line: "LANG={{ locale.system }}"
-    create: "yes"
+    create: true
     state: present

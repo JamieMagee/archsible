@@ -1,7 +1,7 @@
 ---
 - name: Set the timezone
   file:
-    force: "yes"
+    force: true
     path: /etc/localtime
     state: link
     src: /usr/share/zoneinfo/{{ timezone.region }}/{{ timezone.city }}

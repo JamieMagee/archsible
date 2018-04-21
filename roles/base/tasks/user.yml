@@ -13,7 +13,7 @@
     password: "{{ user_password|password_hash('sha512') }}"
     update_password: on_create
     uid: "{{ user.uid }}"
-    append: "yes"
+    append: true
   tags:
     - user
 

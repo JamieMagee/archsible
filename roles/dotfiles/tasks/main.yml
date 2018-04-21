@@ -6,20 +6,20 @@
 
 - name: Check yadm class
   command: "yadm config local.class"
-  become: "yes"
+  become: true
   become_user: "{{ user.name }}"
   changed_when: false
   register: yadm_class
 
 - name: Set yadm class
-  become: "yes"
+  become: true
   become_user: "{{ user.name }}"
   command: "yadm config local.class '{{ yadm.class }}'"
   when: yadm.class != yadm_class.stdout
 
 - name: Check if dotfiles already cloned
   command: "yadm clone {{ dotfiles }}"
-  become: "yes"
+  become: true
   become_user: "{{ user.name }}"
   changed_when: "'Git repo already exists' not in yadm_clone.stdout"
   failed_when: "yadm_clone.rc == 1 and 'Git repo already exists' not in yadm_clone.stdout"
@@ -27,6 +27,6 @@
 
 - name: Decrypt encrypted dotfiles
   command: "yadm decrypt"
-  become: "yes"
+  become: true
   become_user: "{{ user.name }}"
   when: "'Git repo already exists' not in yadm_clone.stdout"

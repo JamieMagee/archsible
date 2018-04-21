@@ -6,7 +6,7 @@
 
 - name: Refresh pacman mirrors
   pacman:
-    update_cache: "yes"
+    update_cache: true
 
 - include: user.yml
 - include: shell.yml

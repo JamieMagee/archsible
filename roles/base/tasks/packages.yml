@@ -68,8 +68,8 @@
 - name: Enable and start pacman cache cleanup timer
   systemd:
     name: paccache.timer
-    enabled: "yes"
+    enabled: true
     state: started
-    daemon_reload: "yes"
+    daemon_reload: true
   tags:
     - packages

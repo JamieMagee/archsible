@@ -2,7 +2,7 @@
 - import_playbook: base.yml
 
 - hosts: localhost
-  become: "yes"
+  become: true
   vars:
     yadm:
       class: home
