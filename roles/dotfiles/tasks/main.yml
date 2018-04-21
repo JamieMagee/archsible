@@ -2,7 +2,7 @@
 - name: Install yadm
   aur:
     name: yadm-git
-    user: {{ user.name }}
+    user: "{{ user.name }}"
 
 - name: Check yadm class
   command: "yadm config local.class"

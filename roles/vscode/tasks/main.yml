@@ -2,7 +2,7 @@
 - name: Install vscode
   aur:
     name: visual-studio-code-bin
-    user: {{ user.name }}
+    user: "{{ user.name }}"
 
 - name: install extensions
   become: true

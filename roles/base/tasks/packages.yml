@@ -1,7 +1,7 @@
 ---
 - name: Install universal base packages
   pacman:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   with_items: "{{ base_packages }}"
   tags:
@@ -25,8 +25,8 @@
   file:
     path: /home/{{ user.name }}/{{ aur.dir }}
     state: directory
-    owner: {{ user.name }}
-    group: {{ user.group }}
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
   tags:
     - aur
     - packages
@@ -34,7 +34,7 @@
 - name: Install cower
   aur:
     name: cower
-    user: {{ user.name }}
+    user: "{{ user.name }}"
     skip_pgp: true
   tags:
     - aur
@@ -42,8 +42,8 @@
 
 - name: Install AUR base packages
   aur:
-    name: {{ item }}
-    user: {{ user.name }}
+    name: "{{ item }}"
+    user: "{{ user.name }}"
   with_items: "{{ aur.packages }}"
   tags:
     - aur

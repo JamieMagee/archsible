@@ -8,7 +8,7 @@
 
 - name: Add user to wheel group
   user:
-    name: {{ user.name }}
+    name: "{{ user.name }}"
     groups: wheel
     append: true
   tags:

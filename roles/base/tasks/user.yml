@@ -1,7 +1,7 @@
 ---
 - name: Create user group
   group:
-    name: {{ user.group }}
+    name: "{{ user.group }}"
     state: present
   tags:
     - user
@@ -21,8 +21,8 @@
   file:
     path: /home/{{ user.name }}/{{ user.log.dir }}
     state: directory
-    owner: {{ user.name }}
-    group: {{ user.group }}
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
   when: user.log.dir is defined
   tags:
     - user
@@ -39,8 +39,8 @@
   file:
     path: /run/user/{{ user.uid }}
     state: directory
-    owner: {{ user.name }}
-    group: {{ user.group }}
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
     mode: 0700
   tags:
     - user

@@ -7,7 +7,7 @@
 - name: Install fisherman
   aur:
     name: fisherman
-    user: {{ user.name }}
+    user: "{{ user.name }}"
 
 - name: Install fisherman packages
   become: true
