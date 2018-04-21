@@ -1,0 +1,31 @@
+---
+- name: Install GDM and Plymouth
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - plymouth
+    - gdm-plymouth
+
+- name: Enable Plymouth GDM
+  systemd:
+    name: gdm-plymouth.service
+    enabled: true
+
+- name: Test Plymouth hook
+  command: grep "HOOKS=(base udev plymouth" /etc/mkinitcpio.conf
+  register: plymouth
+  changed_when: false
+
+- name: Install plymouth hook
+  replace:
+    path: /etc/mkinitcpio.conf
+    regex: HOOKS=(base udev
+    replace: HOOKS=(base udev plymouth
+  notify: mkinitcpio
+  when: plymouth.rc == 1
+
+- name: Install Plymouth settings
+  copy:
+    src: plymouthd.conf
+    dest: /etc/plymouth/plymouthd.conf
