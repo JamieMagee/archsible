@@ -7,6 +7,7 @@
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: ssd, tags: ['ssd'] }
+    - { role: fonts, tags: ['fonts'] }
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
