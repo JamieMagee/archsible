@@ -1,6 +1,6 @@
 ---
 - name: Install universal base packages
-  pacman: 
+  pacman:
     name: {{ item }}
     state: present
   with_items: "{{ base_packages }}"
@@ -32,16 +32,16 @@
     - packages
 
 - name: Install cower
-  aur: 
+  aur:
     name: cower
     user: {{ user.name }}
-    skip_pgp: yes
+    skip_pgp: true
   tags:
     - aur
     - packages
 
 - name: Install AUR base packages
-  aur: 
+  aur:
     name: {{ item }}
     user: {{ user.name }}
   with_items: "{{ aur.packages }}"

@@ -1,6 +1,6 @@
 ---
 - name: Install yadm
-  aur: 
+  aur:
     name: yadm-git
     user: {{ user.name }}
 

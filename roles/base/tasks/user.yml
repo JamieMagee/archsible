@@ -1,6 +1,6 @@
 ---
 - name: Create user group
-  group: 
+  group:
     name: {{ user.group }}
     state: present
   tags:
@@ -18,7 +18,7 @@
     - user
 
 - name: Create user log dir
-  file: 
+  file:
     path: /home/{{ user.name }}/{{ user.log.dir }}
     state: directory
     owner: {{ user.name }}
