@@ -1,0 +1,52 @@
+---
+- name: Set GNOME settings
+  become_user: "{{ user.name }}"
+  block:
+    - name: Set GNOME theme
+      dconf:
+        key: "/org/gnome/desktop/interface/gtk-theme"
+        value: "'Paper'"
+    - name: Set GNOME icon theme
+      dconf:
+        key: "/org/gnome/desktop/interface/icon-theme"
+        value: "'Paper'"
+    - name: Set GNOME cusror theme
+      dconf:
+        key: "/org/gnome/desktop/interface/cursor-theme"
+        value: "'Paper'"
+    - name: Set keyboard inputs
+      dconf:
+        key: "/org/gnome/desktop/input-sources/sources"
+        value: "[('xkb', 'gb'), ('xkb', 'dk')]"
+    - name: Set temperature units
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/unit"
+        value: "'celsius'"
+    - name: Set wind speed units
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/wind-speed-unit"
+        value: "'m/s'"
+    - name: Set pressure units
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/pressure-unit"
+        value: "'mbar'"
+    - name: Set number of days forecast
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/days-forecast"
+        value: "3"
+    - name: Set number of decimal places in temperature
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/decimal-places"
+        value: "0"
+    - name: Set weather provider
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/weather-provider"
+        value: "'darksky.net'"
+    - name: Set darksky.net API key
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/appid-fc"
+        value: "'{{ gnome.extensions.weather.api }}'"
+    - name: Set forecast location
+      dconf:
+        key: "/org/gnome/shell/extensions/openweather/city"
+        value: "'{{ gnome.extensions.weather.city }}'"

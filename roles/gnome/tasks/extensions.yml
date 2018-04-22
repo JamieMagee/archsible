@@ -1,0 +1,14 @@
+---
+- name: Install GNOME shell extensions
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - gnome-shell-extension-openweather-git
+
+- name: Enable GNOME shel extensions
+  command: gnome-shell-extension-tool -e {{ item }}
+  register: gnome_extension
+  changed_when: "'is now enabled' in gnome_extension.stdout"
+  with_items:
+    - openweather-extension@jenslody.de

@@ -5,6 +5,7 @@
   become: true
   roles:
     - { role: gdm, tags: ['gdm'] }
+    - { role: gnome, tags: ['gnome'] }
   vars:
     yadm:
       class: home

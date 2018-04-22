@@ -1,0 +1,26 @@
+---
+- name: Check if GNOME is already installed
+  command: pacman -Qi gnome-shell
+  register: gnome_check
+  changed_when: false
+
+# Using the builtin pacman module is not possible
+# because gdm-plymouth conflicts with gdm
+- name: Install GNOME
+  expect:
+    command: pacman -S gnome
+    responses:
+      Enter a selection: "^7"  # exclude gdm
+      Proceed with installation: "Y"
+  when: gnome_check.rc != 0
+
+- name: Install GNOME paper theme
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - paper-icon-theme-git
+    - paper-gtk-theme-git
+
+- include: extensions.yml
+- include: dconf.yml
