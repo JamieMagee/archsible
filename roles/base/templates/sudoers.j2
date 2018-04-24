@@ -8,3 +8,5 @@ root ALL=(ALL) ALL
 {% for entry in passwordless_sudo %}
 %wheel ALL=(ALL) NOPASSWD:{{ entry }}
 {% endfor %}
+
+Defaults env_keep += "SSH_AUTH_SOCK"

@@ -3,6 +3,8 @@
 
 - hosts: localhost
   become: true
+  roles:
+    - { role: work, tags: ['work'] }
   vars:
     yadm:
       class: work
