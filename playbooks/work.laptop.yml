@@ -6,4 +6,4 @@
   become: true
   vars:
     yadm:
-      class: home
+      class: work
