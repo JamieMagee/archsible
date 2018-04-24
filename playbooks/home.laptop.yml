@@ -1,5 +1,5 @@
 ---
-- import_playbook: base.yml
+- import_playbook: deps/base.yml
 
 - hosts: localhost
   become: true
