@@ -1,0 +1,5 @@
+---
+- name: Install Microsoft Teams
+  aur:
+    name: teams-for-linux
+    user: "{{ user.name }}"
