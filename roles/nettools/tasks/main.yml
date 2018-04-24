@@ -1,0 +1,78 @@
+---
+- name: Install OpenVPN
+  pacman:
+    name: openvpn
+
+- name: Install MTR
+  pacman:
+    name: mtr
+
+- name: Install net-tools
+  pacman:
+    name: net-tools
+
+- name: Install bind-tools
+  pacman:
+    name: bind-tools
+
+- name: Install whois
+  pacman:
+    name: whois
+
+- name: Install netcat
+  pacman:
+    name: gnu-netcat
+
+- name: Install lftp
+  pacman:
+    name: lftp
+
+- name: Install nmap
+  pacman:
+    name: nmap
+
+- name: Install tcpdump
+  pacman:
+    name: tcpdump
+
+- name: Install sshuttle
+  pacman:
+    name: sshuttle
+
+- name: Install pdsh
+  aur:
+    name: pdsh
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install wireshark
+  pacman:
+    name: wireshark-qt
+
+- name: Add user to wireshark group
+  user:
+    name: "{{ user.name }}"
+    groups: wireshark
+    append: true
+  tags:
+    - user
+
+- name: Install postman
+  aur:
+    name: postman-bin
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install socat
+  pacman:
+    name: socat
+
+- name: Install nethogs
+  pacman:
+    name: nethogs
+
+- name: Install speedtest-cli
+  pacman:
+    name: speedtest-cli
