@@ -1,0 +1,35 @@
+---
+# Most recent LTS releases (OpenJDK and Oracle)
+- name: Install OpenJDK Java 8
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - jdk8-openjdk
+    - openjdk8-doc
+    - openjdk8-src
+
+- name: Install Oracle Java 8
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - jdk8
+    - jdk8-docs
+
+# Current version
+- name: Install OpenJDK 10
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - jdk10-openjdk
+    - openjdk10-doc
+    - openjdk10-src
+
+# Next release
+- name: Install Oracle Java 11
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - jdk-devel
+    - jdk-devel-docs
