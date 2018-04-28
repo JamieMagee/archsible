@@ -1,0 +1,5 @@
+---
+- name: restart tlp
+  systemd:
+    name: tlp.service
+    state: restarted
