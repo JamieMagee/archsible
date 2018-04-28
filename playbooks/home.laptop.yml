@@ -4,6 +4,8 @@
 
 - hosts: localhost
   become: true
+  roles:
+    - { role: laptop, tags: ['laptop'] }
   vars:
     yadm:
       class: home

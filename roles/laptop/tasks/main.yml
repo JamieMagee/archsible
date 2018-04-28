@@ -3,10 +3,10 @@
   pacman:
     name: "{{ item }}"
   with_items:
-      - x86_energy_perf_policy
-      - ethtool
-      - tlp
-      - tlp-rdw
+    - x86_energy_perf_policy
+    - ethtool
+    - tlp
+    - tlp-rdw
   tags:
     - tlp
 
