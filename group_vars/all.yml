@@ -1,3 +1,0 @@
----
-mkinitcpio:
-  hooks: "base udev autodetect block filesystems"
