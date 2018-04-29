@@ -1,15 +1,4 @@
 ---
 - name: Set the timezone
-  file:
-    force: true
-    path: /etc/localtime
-    state: link
-    src: /usr/share/zoneinfo/{{ timezone.region }}/{{ timezone.city }}
-
-- name: /etc/adjtime file
-  stat: path=/etc/adjtime
-  register: adjtime
-
-- name: Generate /etc/adjtime
-  command: hwclock --systohc
-  when: adjtime.stat.exists == False
+  timezone:
+    name: "{{ timezone.region }}/{{ timezone.city }}"
