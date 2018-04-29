@@ -1,11 +1,13 @@
 ---
 - import_playbook: deps/base.yml
+  vars:
+    yadm:
+      class: home
+    systemd_boot:
+      root: /dev/sda3
 - import_playbook: deps/gui.yml
 
 - hosts: localhost
   become: true
   roles:
     - { role: laptop, tags: ['laptop'] }
-  vars:
-    yadm:
-      class: home
