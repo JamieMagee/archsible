@@ -6,7 +6,7 @@
   with_items:
     - gnome-shell-extension-openweather-git
 
-- name: Enable GNOME shel extensions
+- name: Enable GNOME shell extensions
   command: gnome-shell-extension-tool -e {{ item }}
   register: gnome_extension
   changed_when: "'is now enabled' in gnome_extension.stdout"
