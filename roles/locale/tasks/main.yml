@@ -1,7 +1,7 @@
 ---
 - name: Generate locales
   locale_gen:
-      name: "{{ item }}"
+    name: "{{ item }}"
   with_items: "{{ locale.generate }}"
 
 - name: Set system locale
