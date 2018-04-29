@@ -2,6 +2,12 @@
 - hosts: localhost
   become: true
   roles:
+    - { role: timezone, tags: ['timezone'] }
+    - { role: locale, tags: ['locale'] }
+    - { role: hostname, tags: ['hostname'], when: "hostname is defined and hostname != ''" }
+    - { role: mkinitcpio, tags: ['mkinitcpio'] }
+    - { role: systemd-boot, tags: ['systemd-boot'], when: "systemd_boot is defined" }
+    - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
     - { role: base, tags: ['base'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: dotfiles, tags: ['dotfiles'] }
@@ -12,3 +18,6 @@
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
+    - name: hostname
+      prompt: "Enter the desired hostname"
+      private: false
