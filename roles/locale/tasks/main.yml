@@ -1,16 +1,11 @@
 ---
-- name: Modify locale generation file
-  lineinfile:
-    path: /etc/locale.gen
-    backrefs: true
-    regexp: "^#{{ item }}(.*)"
-    line: "{{ item }}\\1"
+- name: Generate locales
+  locale_gen:
+      name: "{{ item }}"
   with_items: "{{ locale.generate }}"
-  notify: run locale-gen
 
 - name: Set system locale
   lineinfile:
     path: /etc/locale.conf
     line: "LANG={{ locale.system }}"
     create: true
-    state: present
