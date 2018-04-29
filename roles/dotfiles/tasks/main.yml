@@ -9,6 +9,7 @@
   become: true
   become_user: "{{ user.name }}"
   changed_when: false
+  check_mode: false
   register: yadm_class
 
 - name: Set yadm class
@@ -18,15 +19,18 @@
   when: yadm.class != yadm_class.stdout
 
 - name: Check if dotfiles already cloned
+  stat:
+      path: "/home/{{ user.name }}/.yadm/repo.git"
+  register: yadm_repo
+
+- name: Clone dotfiles repo
   command: "yadm clone {{ dotfiles }}"
   become: true
   become_user: "{{ user.name }}"
-  changed_when: "'Git repo already exists' not in yadm_clone.stdout"
-  failed_when: "yadm_clone.rc == 1 and 'Git repo already exists' not in yadm_clone.stdout"
-  register: yadm_clone
+  when: "yadm_repo.stat.exists == False"
 
 - name: Decrypt encrypted dotfiles
   command: "yadm decrypt"
   become: true
   become_user: "{{ user.name }}"
-  when: "'Git repo already exists' not in yadm_clone.stdout"
+  when: "yadm_repo.stat.exists == False"

@@ -9,6 +9,7 @@
   register: hdparm
   ignore_errors: true
   changed_when: false
+  check_mode: false
 
 - name: Enable and start weekly filesystem TRIM timer
   systemd:

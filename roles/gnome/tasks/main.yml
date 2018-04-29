@@ -3,6 +3,7 @@
   command: pacman -Qi gnome-shell
   register: gnome_check
   changed_when: false
+  check_mode: false
 
 # Using the builtin pacman module is not possible
 # because gdm-plymouth conflicts with gdm

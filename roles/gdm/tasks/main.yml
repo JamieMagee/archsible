@@ -16,14 +16,15 @@
 - name: Install Plymouth hook
   replace:
     path: /etc/mkinitcpio.conf
-    regexp: HOOKS=\(base udev (?!plymouth)
-    replace: HOOKS=(base udev plymouth
+    regexp: 'HOOKS=\(base udev (?!plymouth)'
+    replace: 'HOOKS=(base udev plymouth '
   notify: mkinitcpio
 
 - name: Test current Plymouth theme
   command: plymouth-set-default-theme
   register: plymouth_theme
   changed_when: false
+  check_mode: false
 
 - name: Set plymouth theme
   command: plymouth-set-default-theme arch-logo -R

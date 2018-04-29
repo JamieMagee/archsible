@@ -8,4 +8,3 @@
     path: /etc/hosts
     line: "127.0.0.1 {{ hostname }}.localdomain {{ hostname }}"
     create: true
-    state: present
