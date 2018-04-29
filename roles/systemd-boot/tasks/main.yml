@@ -14,6 +14,12 @@
     dest: /boot/loader/loader.conf
     mode: 0644
 
+- name: Get boot partition UUID
+  command: blkid -s PARTUUID -o value {{ systemd_boot.root }}
+  register: rootfs
+  check_mode: false
+  changed_when: false
+
 - name: Copy systemd-boot entry configuration
   template:
     src: arch.conf.j2

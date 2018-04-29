@@ -4,4 +4,4 @@ linux /vmlinuz-linux
 initrd /intel-ucode.img
 {% endif %}
 initrd /initramfs-linux.img
-options root={{ systemd.boot.root_device }} rw
+options root=PARTUUID={{ rootfs.stdout }} rw rootfstype=btrfs
