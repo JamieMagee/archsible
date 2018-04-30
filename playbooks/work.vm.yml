@@ -1,10 +1,10 @@
 ---
 - import_playbook: deps/base.yml
+  vars:
+    yadm:
+      class: work
 
 - hosts: localhost
   become: true
   roles:
     - { role: work, tags: ['work'] }
-  vars:
-    yadm:
-      class: work

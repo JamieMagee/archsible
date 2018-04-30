@@ -1,9 +1,12 @@
 ---
 - import_playbook: deps/base.yml
+  vars:
+    yadm:
+      class: work
 - import_playbook: deps/gui.yml
 
 - hosts: localhost
   become: true
-  vars:
-    yadm:
-      class: work
+    roles:
+    - { role: laptop, tags: ['laptop'] }
+    - { role: work, tags: ['work'] }

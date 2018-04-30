@@ -1,9 +1,9 @@
 ---
 - import_playbook: deps/base.yml
+  vars:
+    yadm:
+      class: home
 - import_playbook: deps/gui.yml
 
 - hosts: localhost
   become: true
-  vars:
-    yadm:
-      class: home
