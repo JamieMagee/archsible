@@ -32,4 +32,26 @@
     user: "{{ user.name }}"
   with_items:
     - jdk-devel
-    - jdk-devel-docs
+    # - jdk-devel-docs
+
+- name: Check current default JDK
+  command: archlinux-java
+  check_mode: false
+  changed_when: false
+  register: default_jdk
+
+- name: Set default JDK
+  command: archlinux-java set java-8-jdk
+  when: "default_jdk.stdout != 'java-8-jdk'"
+
+- name: Install Maven
+  pacman:
+    name: maven
+
+- name: Install Gradle
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - gradle
+    - gradle-doc
+    - gradle-src
