@@ -16,6 +16,7 @@
     - { role: fonts, tags: ['fonts'] }
     - { role: nettools, tags: ['nettools'] }
     - { role: ntp, tags: ['ntp'] }
+    - { role: firejail, tags: ['firejail'] }
     - { role: java, tags: ['java'] }
   vars_prompt:
     - name: user_password
