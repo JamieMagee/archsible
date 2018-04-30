@@ -1,6 +1,6 @@
 ---
 - name: Install hunspell
-  pacman: 
+  pacman:
     name: "{{ item }}"
   with_items:
     - hunspell
