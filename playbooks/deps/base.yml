@@ -18,6 +18,7 @@
     - { role: ntp, tags: ['ntp'] }
     - { role: firejail, tags: ['firejail'] }
     - { role: filesystems, tags: ['filesystems'] }
+    - { role: archive, tags: ['archive'] }
     - { role: java, tags: ['java'] }
   vars_prompt:
     - name: user_password
