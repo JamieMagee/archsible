@@ -2,7 +2,6 @@
 - name: Install universal base packages
   pacman:
     name: "{{ item }}"
-    state: present
   with_items: "{{ base_packages }}"
   tags:
     - packages

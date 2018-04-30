@@ -2,7 +2,6 @@
 - name: Install fish shell
   pacman:
     name: fish
-    state: present
 
 - name: Install fisherman
   aur:

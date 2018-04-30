@@ -2,7 +2,6 @@
 - name: Install sudo
   pacman:
     name: sudo
-    state: present
   tags:
     - sudo
 

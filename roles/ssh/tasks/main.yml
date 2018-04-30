@@ -2,7 +2,6 @@
 - name: Install OpenSSH
   pacman:
     name: openssh
-    state: present
 
 - name: Push OpenSSH daemon configuration file
   template:
@@ -45,7 +44,6 @@
 - name: Install keychain
   pacman:
     name: keychain
-    state: present
 
 - name: Make directory for user SSH key
   file:
