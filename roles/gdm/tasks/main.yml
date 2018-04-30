@@ -7,6 +7,8 @@
     - plymouth
     - gdm-plymouth
     - plymouth-theme-arch-logo
+  tags:
+    - aur
 
 - name: Enable Plymouth GDM
   systemd:

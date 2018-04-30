@@ -3,6 +3,8 @@
   aur:
     name: visual-studio-code-bin
     user: "{{ user.name }}"
+  tags:
+    - aur
 
 - name: install extensions
   become: true

@@ -22,6 +22,8 @@
   with_items:
     - paper-icon-theme-git
     - paper-gtk-theme-git
+  tags:
+    - aur
 
 - include: extensions.yml
 - include: dconf.yml

@@ -5,6 +5,8 @@
     user: "{{ user.name }}"
   with_items:
     - gnome-shell-extension-openweather-git
+  tags:
+    - aur
 
 - name: Enable GNOME shell extensions
   command: gnome-shell-extension-tool -e {{ item }}

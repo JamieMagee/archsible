@@ -3,3 +3,5 @@
   aur:
     name: teams-for-linux
     user: "{{ user.name }}"
+  tags:
+    - aur

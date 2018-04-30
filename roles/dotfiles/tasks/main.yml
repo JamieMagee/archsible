@@ -3,6 +3,8 @@
   aur:
     name: yadm-git
     user: "{{ user.name }}"
+  tags:
+    - aur
 
 - name: Check yadm class
   command: "yadm config local.class"

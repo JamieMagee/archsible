@@ -8,6 +8,9 @@
   aur:
     name: fisherman
     user: "{{ user.name }}"
+  tags:
+    - aur
+
 
 - name: Install fisherman packages
   become: true
