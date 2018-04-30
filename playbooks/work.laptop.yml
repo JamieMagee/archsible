@@ -7,6 +7,6 @@
 
 - hosts: localhost
   become: true
-    roles:
+  roles:
     - { role: laptop, tags: ['laptop'] }
     - { role: work, tags: ['work'] }
