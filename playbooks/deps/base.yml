@@ -15,6 +15,7 @@
     - { role: ssd, tags: ['ssd'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: nettools, tags: ['nettools'] }
+    - { role: ntp, tags: ['ntp'] }
     - { role: java, tags: ['java'] }
   vars_prompt:
     - name: user_password
