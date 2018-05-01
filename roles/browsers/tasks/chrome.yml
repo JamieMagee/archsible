@@ -1,3 +1,4 @@
+---
 - name: Install Chrome
   aur:
     name: google-chrome-dev
