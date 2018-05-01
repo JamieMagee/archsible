@@ -2,6 +2,3 @@
 - name: Install firejail
   pacman:
     name: firejail
-
-- name: Enable firejail by default
-  command: firecfg
