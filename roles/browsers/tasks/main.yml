@@ -1,27 +1,33 @@
-- name: Install Chromium
-  pacman:
-    name: chromium
-  tags:
-    - chromium
-
-- name: Jail Chromium
-  file:
-    src: /usr/bin/firejail
-    dest: /usr/local/bin/chromium
-    state: link
-  tags:
-    - chromium
-    - firejail
-
-- name: Install Pepper Flash
-  pacman:
-    name: pepper-flash
-  tags:
-    - chromium
-
-- name: Install Widevine plugin
+- name: Install Chrome
   aur:
-    name: chromium-widevine
+    name: google-chrome-dev
     user: "{{ user.name }}"
   tags:
-    - chromium
+    - chrome
+
+- name: Jail Chrome
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/google-chrome-unstable
+    state: link
+  tags:
+    - chrome
+    - firejail
+
+- name: Copy Chrome desktop file
+  copy:
+    src: /usr/share/applications/google-chrome-unstable.desktop
+    dest: "/home/{{ user.name }}/.local/share/applications/google-chrome-unstable.desktop"
+
+- name: Jail Chrome desktop file
+  lineinfile:
+    path: "/home/{{ user.name }}/.local/share/applications/google-chrome-unstable.desktop"
+    regexp: "Exec=/usr/bin/google-chrome-unstable %U"
+    line: "Exec=google-chrome-unstable %U"
+
+- name: Install shutdown hook
+  aur:
+    name: chrome-shutdown-hook
+    user: "{{ user.name }}"
+  tags:
+    - chrome
