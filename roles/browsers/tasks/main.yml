@@ -1,0 +1,27 @@
+- name: Install Chromium
+  pacman:
+    name: chromium
+  tags:
+    - chromium
+
+- name: Jail Chromium
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/chromium
+    state: link
+  tags:
+    - chromium
+    - firejail
+
+- name: Install Pepper Flash
+  pacman:
+    name: pepper-flash
+  tags:
+    - chromium
+
+- name: Install Widevine plugin
+  aur:
+    name: chromium-widevine
+    user: "{{ user.name }}"
+  tags:
+    - chromium
