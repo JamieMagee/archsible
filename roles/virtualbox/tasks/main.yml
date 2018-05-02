@@ -18,6 +18,6 @@
   user:
     name: "{{ user.name }}"
     groups: vboxusers
-    append: yes
+    append: true
   tags:
     - user
