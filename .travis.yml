@@ -9,4 +9,4 @@ install:
 
 script:
   - yamllint .
-  - find playbooks -name \*yml -exec ansible-lint -v {} \;
+  - cd playbooks && find -name \*yml -exec ansible-lint -v {} \;
