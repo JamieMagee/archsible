@@ -1,3 +1,0 @@
----
-- include: install-plugins.yml
-  when: "users is defined and users not in ([], None, '', omit)"
