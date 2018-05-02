@@ -6,3 +6,4 @@
     - { role: gnome, tags: ['gnome'] }
     - { role: browsers, tags: ['browsers'] }
     - { role: teams, tags: ['teams'] }
+    - { role: intellij, tags: ['intellij'] }

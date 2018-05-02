@@ -1,0 +1,15 @@
+---
+# Home directory of IntelliJ IDEA installation
+intellij_plugins_intellij_home: '{{ ansible_local.intellij.general.home }}'
+
+# Directory name of user specific IntelliJ IDEA files
+intellij_plugins_intellij_user_dirname: '{{ ansible_local.intellij.general.user_dirname }}'
+
+# Directory to store files downloaded for IntelliJ IDEA installation
+intellij_plugins_download_dir: "{{ x_ansible_download_dir | default(ansible_env.HOME + '/.ansible/tmp/downloads') }}"
+
+# URL for IntelliJ IDEA plugin manager web service
+intellij_plugins_manager_url: 'https://plugins.jetbrains.com/pluginManager/'
+
+# List of users to configure IntelliJ IDEA for
+users: []

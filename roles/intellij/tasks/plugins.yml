@@ -1,0 +1,11 @@
+---
+- name: Install plugins
+  include_role:
+    name: gantsign.intellij-plugins
+  vars:
+    intellij_plugins_intellij_home: "/opt/intellij-idea-ultimate-edition"
+    intellij_plugins_intellij_user_dirname: ".IntelliJIdea2018.1"
+    users:
+      - username: "{{ user.name }}"
+        intellij_plugins:
+          - CheckStyle-IDEA

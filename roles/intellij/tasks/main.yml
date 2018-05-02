@@ -1,0 +1,9 @@
+---
+- name: Install IntelliJ IDEA
+  aur:
+    name: intellij-idea-ultimate-edition
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- include: plugins.yml
