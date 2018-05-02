@@ -1,0 +1,23 @@
+---
+- name: Install VLC
+  pacman:
+    name: vlc
+
+- name: Jail VLC
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/vlc
+    state: link
+  tags:
+    - firejail
+
+- name: Copy VLC desktop file
+  copy:
+    src: /usr/share/applications/vlc.desktop
+    dest: "/home/{{ user.name }}/.local/share/applications/vlc.desktop"
+
+- name: Jail VLC desktop file
+  lineinfile:
+    path: "/home/{{ user.name }}/.local/share/applications/vlc.desktop"
+    regexp: "Exec=/usr/bin/vlc %U"
+    line: "Exec=vlc %U"

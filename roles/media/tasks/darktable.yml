@@ -1,0 +1,6 @@
+---
+- name: Install darktable
+  pacman:
+    name: darktable
+  tags:
+    - darktable
