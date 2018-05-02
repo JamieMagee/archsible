@@ -9,3 +9,4 @@
     - { role: office, tags: ['office'] }
     - { role: intellij, tags: ['intellij'] }
     - { role: vpn, tags: ['vpn'] }
+    - { role: calibre, tags: ['calibre'] }
