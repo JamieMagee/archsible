@@ -1,0 +1,17 @@
+---
+- name: Install docker
+  pacman:
+    name: docker
+
+- name: Add user to docker group
+  user:
+    name: "{{ user.name }}"
+    groups: docker
+    append: true
+  tags:
+    - user
+
+- name: Enable and start docker service
+  systemd:
+    name: docker.service
+    enabled: true

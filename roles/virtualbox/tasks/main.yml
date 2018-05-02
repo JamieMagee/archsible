@@ -1,0 +1,23 @@
+---
+- name: Install VirtualBox and dependencies
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - virtualbox
+    - virtualbox-guest-iso
+    - virtualbox-host-dkms
+
+- name: Install VirtualBox extensions
+  aur:
+    name: virtualbox-ext-oracle
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Add the user to vboxusers group
+  user:
+    name: "{{ user.name }}"
+    groups: vboxusers
+    append: yes
+  tags:
+    - user

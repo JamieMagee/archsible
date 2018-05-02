@@ -20,6 +20,9 @@
     - { role: filesystems, tags: ['filesystems'] }
     - { role: archive, tags: ['archive'] }
     - { role: spell, tags: ['spell'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: k8s, tags: ['k8s'] }
     - { role: java, tags: ['java'] }
   vars_prompt:
     - name: user_password
