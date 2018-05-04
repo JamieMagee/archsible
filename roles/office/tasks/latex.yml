@@ -1,0 +1,8 @@
+---
+- name: Install texlive-most
+  pacman:
+    name: texlive-most
+
+- name: Install TeXstudio
+  pacman:
+    name: texstudio

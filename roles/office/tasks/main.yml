@@ -1,0 +1,14 @@
+---
+- include: libreoffice.yml
+- include: latex.yml
+
+- name: Install pandoc
+  pacman:
+    name: pandoc
+
+- name: Install masterpdfeditor
+  aur:
+    name: masterpdfeditor
+    user: "{{ user.name }}"
+  tags:
+    - aur
