@@ -1,4 +1,4 @@
 ---
-- name: Install intel microcode
+- name: Install Intel microcode
   pacman:
     name: intel-ucode
