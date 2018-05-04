@@ -1,0 +1,26 @@
+---
+- name: Install Private Internet Access configuration files
+  aur:
+    name: private-internet-access-vpn
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Setup Private Internet Access credentials
+  copy:
+    content: |
+      {{ pia.credentials.username}}
+      {{ pia.credentials.password }}
+    dest: /etc/private-internet-access/login.conf
+    owner: root
+    group: root
+    mode: 0600
+
+- name: Set Private Internet Access configuration
+  template:
+    src: pia.conf.j2
+    dest: /etc/private-internet-access/pia.conf
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+
+

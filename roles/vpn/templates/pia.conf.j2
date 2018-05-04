@@ -1,0 +1,7 @@
+[pia]
+openvpn_auto_login = True
+
+[configure]
+apps = nm
+port = 1197
+hosts = {{ pia.locations | join(', ') }}

@@ -8,3 +8,4 @@
     - { role: teams, tags: ['teams'] }
     - { role: office, tags: ['office'] }
     - { role: intellij, tags: ['intellij'] }
+    - { role: vpn, tags: ['vpn'] }
