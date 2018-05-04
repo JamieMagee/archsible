@@ -1,0 +1,5 @@
+---
+- name: restart cups
+  systemd:
+    name: org.cups.cupsd.service
+    state: restarted
