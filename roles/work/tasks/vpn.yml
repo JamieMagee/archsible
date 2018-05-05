@@ -1,0 +1,13 @@
+---
+- name: Install NetworkManager PPTP plugin
+  pacman:
+    name: networkmanager-pptp
+
+- name: Install VPN config
+  template:
+    src: MSITVPN.j2
+    dest: /etc/NetworkManager/system-connections/MSITVPN
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart NetworkManager

@@ -1,0 +1,10 @@
+---
+- name: Clone work related git repos
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: "{{ work.git.host }}/{{ item }}"
+    dest: "/home/{{ user.name }}/work/{{ item }}"
+    accept_hostkey: true
+    version: "master"
+  with_items: "{{ work.git.repos }}"
