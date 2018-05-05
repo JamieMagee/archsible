@@ -22,3 +22,13 @@
     dest: /etc/private-internet-access/pia.conf
     owner: "{{ user.name }}"
     group: "{{ user.name }}"
+
+- name: Check if VPN configuration exists
+  stat:
+    path: "/etc/NetworkManager/system-configuration/{{ pia.locations | first }}"
+  register: vpn_config
+
+- name: Generate VPN configuration files
+  command: pia -a
+  when: "vpn_config.stat.exists == False"
+  notify: Restart NetworkManager
