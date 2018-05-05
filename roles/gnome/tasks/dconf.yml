@@ -5,15 +5,23 @@
     - name: Set GNOME theme
       dconf:
         key: "/org/gnome/desktop/interface/gtk-theme"
-        value: "'Paper'"
+        value: "'Adapta-Nokto-Eta'"
     - name: Set GNOME icon theme
       dconf:
         key: "/org/gnome/desktop/interface/icon-theme"
         value: "'Paper'"
-    - name: Set GNOME cusror theme
+    - name: Set GNOME cursor theme
       dconf:
         key: "/org/gnome/desktop/interface/cursor-theme"
         value: "'Paper'"
+    - name: Set font
+      dconf:
+        key: "/org/gnome/desktop/interface/font-name"
+        value: "'Roboto 11'"
+    - name: Set document font
+      dconf:
+        key: "/org/gnome/desktop/interface/document-font-name"
+        value: "'Roboto 11'"
     - name: Set keyboard inputs
       dconf:
         key: "/org/gnome/desktop/input-sources/sources"

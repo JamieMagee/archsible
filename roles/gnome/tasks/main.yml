@@ -15,13 +15,13 @@
       Proceed with installation: "Y"
   when: gnome_check.rc != 0
 
-- name: Install GNOME paper theme
+- name: Install GNOME themes
   aur:
     name: "{{ item }}"
     user: "{{ user.name }}"
   with_items:
     - paper-icon-theme-git
-    - paper-gtk-theme-git
+    - adapta-gtk-theme-git
   tags:
     - aur
 
