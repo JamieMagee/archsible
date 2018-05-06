@@ -25,6 +25,7 @@
     - { role: k8s, tags: ['k8s'] }
     - { role: java, tags: ['java'] }
     - { role: cups, tags: ['cups'] }
+    - { role: urlwatch, tags: ['urlwatch'] }
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"

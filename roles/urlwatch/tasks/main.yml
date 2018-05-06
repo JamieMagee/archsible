@@ -1,0 +1,21 @@
+---
+- name: Install urlwatch
+  pacman:
+    name: urlwatch
+
+- name: Install urlwarch systemd service
+  copy:
+    src: urlwatch.service
+    dest: /etc/systemd/system/urlwatch.service
+
+- name: Install urlwatch systemd timer
+  copy:
+    src: urlwatch.timer
+    dest: /etc/systemd/system/urlwatch.timer
+
+- name: Enable urlwatch systemd timer
+  systemd:
+    name: urlwatch.timer
+    enabled: true
+    state: started
+    daemon_reload: true
