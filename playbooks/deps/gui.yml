@@ -4,6 +4,8 @@
   roles:
     - { role: gdm, tags: ['gdm'] }
     - { role: gnome, tags: ['gnome'] }
+    - { role: sound, tags: ['sound'] }
+    - { role: bluetooth, tags: ['bluetooth'], when: "bluetooth is defined"}
     - { role: browsers, tags: ['browsers'] }
     - { role: teams, tags: ['teams'] }
     - { role: office, tags: ['office'] }

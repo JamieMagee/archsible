@@ -1,0 +1,17 @@
+---
+- name: Install alsa-utils
+  pacman:
+    name: alsa-utils
+
+- name: Install PulseAudio
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - pulseaudio
+    - pulseaudio-alsa
+    - pavucontrol
+
+- name: Switch output to newly connected devices
+  lineinfile:
+    dest: /etc/pulse/default.pa
+    line: "load-module module-switch-on-connect"

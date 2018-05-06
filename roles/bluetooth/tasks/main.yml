@@ -1,0 +1,41 @@
+---
+- name: Install bluetooth libraries and tools
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - pulseaudio-bluetooth
+    - bluez
+    - bluez-libs
+    - bluez-utils
+    - bluez-firmware
+    - blueman
+  notify:
+    - restart pulse as user
+
+- name: Unblock the bluetooth service
+  systemd:
+    name: "rfkill-block@bluetooth.service"
+    enabled: false
+    state: stopped
+  when: bluetooth.disable == False
+
+- name: Enable and start the bluetooth service
+  systemd:
+    name: bluetooth.service
+    enabled: true
+    state: started
+  when: bluetooth.disable == False
+
+- name: Disable and stop the bluetooth service
+  systemd:
+    name: bluetooth.service
+    enabled: false
+    state: stopped
+  when: bluetooth.disable == True
+
+- name: Block the bluetooth service
+  systemd:
+    name: "rfkill-block@bluetooth.service"
+    enabled: true
+    state: started
+  when: bluetooth.disable == True
