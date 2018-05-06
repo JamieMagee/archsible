@@ -1,4 +1,5 @@
 ---
+- include: spotify.yml
 - include: darktable.yml
 - include: vlc.yml
 
