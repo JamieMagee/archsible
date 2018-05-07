@@ -1,0 +1,63 @@
+# {{ ansible_managed }}
+
+# Night Light settings
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled={{ gnome.night_light.enabled | ternary('true', 'false') }}
+night-light-temperature={{ gnome.night_light.color_temperature | default(4000) }}
+
+[org/gnome/desktop/calendar]
+show-weekdate={{ gnome.date_time.show_weeks_in_calendar | ternary('true', 'false') }}
+
+[org/gnome/desktop/interface]
+# Date and time settings
+clock-show-date={{ gnome.date_time.show_date_in_clock | ternary('true', 'false') }}
+
+# Battery settings
+show-battery-percentage={{ gnome.battery.show_percentage | ternary('true', 'false') }}
+
+# Theme settings
+gtk-theme='{{ gnome.theme.theme_name }}'
+icon-theme='{{ gnome.theme.icon_theme_name }}'
+cursor-theme='{{ gnome.theme.icon_theme_name }}'
+
+# Font settings
+font-name='{{ gnome.theme.font_name }}'
+document-font-name='{{ gnome.theme.font_name }}'
+monospace-font-name='{{ gnome.theme.mono_font_name }}'
+
+# Keyboard settings
+[/org/gnome/desktop/input-sources]
+sources={{ gnome.input_sources }}
+
+# Touchpad settings
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click={{ gnome.touchpad.tap_to_click | ternary('true', 'false') }}
+natural-scroll={{ gnome.touchpad.natural_scrolling | ternary('true', 'false') }}
+disable-while-typing={{ gnome.touchpad.disabled_while_typing | ternary('true', 'false') }}
+
+# Power settings
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout={{ gnome.power.sleep_timeout_when_computer_on_ac | default(3600) }}
+sleep-inactive-ac-type='{{ gnome.power.timeout_action_when_computer_on_ac | default("hibernate") }}'
+sleep-inactive-battery-timeout={{ gnome.power.sleep_timeout_when_computer_on_battery | default(3600) }}
+sleep-inactive-battery-type='{{ gnome.power.timeout_action_when_computer_on_battery | default("hibernate") }}'
+power-button-action='{{ gnome.power.power_button_action | default("suspend") }}'
+
+# Lock screen settings
+[org/gnome/desktop/screensaver]
+lock-enabled={{ gnome.lock_screen.automatic_lock | ternary('true', 'false') }}
+lock-delay={{ gnome.lock_screen.lock_screen_after_blank_for | default(0) }}
+status-message-enabled={{ gnome.lock_screen.show_notifications | ternary('true', 'false') }}
+show-full-name-in-top-bar={{ gnome.lock_screen.show_full_name_of_user | ternary('true', 'false') }}
+
+# Extension settings
+# Openweather
+[/org/gnome/shell/extensions/openweather]
+weather-provider='{{ gnome.extensions.weather.provider }}'
+days-forecast={{ gnome.extensions.weather.days_forecast }}
+unit='{{ gnome.extensions.weather.unit }}'
+wind-speed-unit='{{ gnome.extensions.weather.wind_speed_unit }}'
+pressure-unit='{{ gnome.extensions.weather.pressure_unit }}'
+appid-fc='{{ gnome.extensions.weather.api }}'
+city='{{ gnome.extensions.weather.city }}'
+decimal-places={{ gnome.extensions.weather.decimal_places }}

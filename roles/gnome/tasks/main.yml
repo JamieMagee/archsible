@@ -25,5 +25,7 @@
   tags:
     - aur
 
-- include: extensions.yml
 - include: dconf.yml
+- include: gtk.yml
+- include: extensions.yml
+- include: online_accounts.yml
