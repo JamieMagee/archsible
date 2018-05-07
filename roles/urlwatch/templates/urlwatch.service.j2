@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch selected URLs for changes
+
+[Service]
+ExecStart=/usr/bin/urlwatch
+User={{ user.name }}
+
+[Install]
+WantedBy=multi-user.target
