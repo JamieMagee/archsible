@@ -23,6 +23,7 @@
     - { role: docker, tags: ['docker'] }
     - { role: virtualbox, tags: ['virtualbox'] }
     - { role: k8s, tags: ['k8s'] }
+    - { role: node, tags: ['node'] }
     - { role: java, tags: ['java'] }
     - { role: cups, tags: ['cups'] }
     - { role: urlwatch, tags: ['urlwatch'] }
