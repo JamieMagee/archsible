@@ -1,0 +1,21 @@
+---
+- name: Install Azure command-line tools
+  aur:
+    name: python-azure-cli
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install Azure Storage Explorer
+  aur:
+    name: storageexplorer
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install SQL Operations Studio
+  aur:
+    name: sqlops
+    user: "{{ user.name }}"
+  tags:
+    - aur

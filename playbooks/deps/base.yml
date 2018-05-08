@@ -22,6 +22,7 @@
     - { role: spell, tags: ['spell'] }
     - { role: docker, tags: ['docker'] }
     - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: azure, tags: ['azure'] }
     - { role: k8s, tags: ['k8s'] }
     - { role: node, tags: ['node'] }
     - { role: java, tags: ['java'] }
