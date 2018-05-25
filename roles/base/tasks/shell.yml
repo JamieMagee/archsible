@@ -10,7 +10,6 @@
   tags:
     - aur
 
-
 - name: Install fisherman packages
   become: true
   become_user: "{{ user.name }}"
