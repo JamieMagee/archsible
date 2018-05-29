@@ -6,20 +6,6 @@
   tags:
     - aur
 
-- name: Check yadm class
-  command: "yadm config local.class"
-  become: true
-  become_user: "{{ user.name }}"
-  changed_when: false
-  check_mode: false
-  register: yadm_class
-
-- name: Set yadm class
-  become: true
-  become_user: "{{ user.name }}"
-  command: "yadm config local.class '{{ yadm.class }}'"
-  when: yadm.class != yadm_class.stdout
-
 - name: Check if dotfiles already cloned
   stat:
     path: "/home/{{ user.name }}/.yadm/repo.git"
@@ -36,3 +22,23 @@
   become: true
   become_user: "{{ user.name }}"
   when: "yadm_repo.stat.exists == False"
+
+- name: Check yadm class
+  command: "yadm config local.class"
+  become: true
+  become_user: "{{ user.name }}"
+  changed_when: false
+  check_mode: false
+  register: yadm_class
+
+- name: Set yadm class
+  become: true
+  become_user: "{{ user.name }}"
+  command: "yadm config local.class '{{ yadm.class }}'"
+  when: yadm.class != yadm_class.stdout
+
+- name: Link dotfiles
+  become: true
+  become_user: "{{ user.name }}"
+  command: "yadm alt"
+  when: yadm.class != yadm_class.stdout
