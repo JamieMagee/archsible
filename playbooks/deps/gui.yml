@@ -12,3 +12,4 @@
     - { role: intellij, tags: ['intellij'] }
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
+    - { role: media, tags: ['media'] }
