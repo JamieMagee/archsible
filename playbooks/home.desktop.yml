@@ -1,9 +1,50 @@
 ---
-- import_playbook: deps/base.yml
+- hosts: localhost
+  become: true
+  roles:
+    - { role: timezone, tags: ['timezone'] }
+    - { role: locale, tags: ['locale'] }
+    - { role: hostname, tags: ['hostname'], when: "hostname is defined and hostname != ''" }
+    - { role: mkinitcpio, tags: ['mkinitcpio'] }
+    - { role: systemd-boot, tags: ['systemd-boot'], when: "systemd_boot is defined" }
+    - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
+    - { role: base, tags: ['base'] }
+    - { role: dotfiles, tags: ['dotfiles'] }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: ssd, tags: ['ssd'] }
+    - { role: fonts, tags: ['fonts'] }
+    - { role: nettools, tags: ['nettools'] }
+    - { role: ntp, tags: ['ntp'] }
+    - { role: firejail, tags: ['firejail'] }
+    - { role: filesystems, tags: ['filesystems'] }
+    - { role: archive, tags: ['archive'] }
+    - { role: spell, tags: ['spell'] }
+    - { role: docker, tags: ['docker'] }
+    - { role: virtualbox, tags: ['virtualbox'] }
+    - { role: azure, tags: ['azure'] }
+    - { role: k8s, tags: ['k8s'] }
+    - { role: node, tags: ['node'] }
+    - { role: java, tags: ['java'] }
+    - { role: cups, tags: ['cups'] }
+    - { role: urlwatch, tags: ['urlwatch'] }
+    - { role: gdm, tags: ['gdm'] }
+    - { role: gnome, tags: ['gnome'] }
+    - { role: sound, tags: ['sound'] }
+    - { role: bluetooth, tags: ['bluetooth'], when: "bluetooth is defined"}
+    - { role: browsers, tags: ['browsers'] }
+    - { role: teams, tags: ['teams'] }
+    - { role: office, tags: ['office'] }
+    - { role: vscode, tags: ['vscode'] }
+    - { role: intellij, tags: ['intellij'] }
+    - { role: vpn, tags: ['vpn'] }
+    - { role: calibre, tags: ['calibre'] }
+    - { role: media, tags: ['media'] }
   vars:
     yadm:
       class: home
-- import_playbook: deps/gui.yml
-
-- hosts: localhost
-  become: true
+  vars_prompt:
+    - name: user_password
+      prompt: "Enter desired user password"
+    - name: hostname
+      prompt: "Enter the desired hostname"
+      private: false
