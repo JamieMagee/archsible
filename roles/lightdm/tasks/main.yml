@@ -1,0 +1,20 @@
+---
+- name: Install LightDM
+  pacman:
+    name: lightdm
+
+- name: Install LightDM Greeter
+  aur:
+    name: lightdm-webkit2-greeter
+    user: "{{ user.name }}"
+
+- name: Enable LightDM
+  systemd:
+    name: lightdm.service
+    enabled: true
+
+- name: Enable quiet boot
+  replace:
+    path: /boot/loader/entries/arch.conf
+    regexp: '(^options(\s+(?!quiet splash udev\.log_priority=3)[\w=\-\.\,\_]+)*)\s*$'
+    replace: '\1 quiet splash udev.log_priority=3'

@@ -27,7 +27,7 @@
     - { role: java, tags: ['java'] }
     - { role: cups, tags: ['cups'] }
     - { role: urlwatch, tags: ['urlwatch'] }
-    - { role: gdm, tags: ['gdm'] }
+    - { role: lightdm, tags: ['lightdm'] }
     - { role: gnome, tags: ['gnome'] }
     - { role: sound, tags: ['sound'] }
     - { role: bluetooth, tags: ['bluetooth'], when: "bluetooth is defined"}
