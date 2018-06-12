@@ -3,6 +3,10 @@
   pacman:
     name: texlive-most
 
-- name: Install TeXstudio
-  pacman:
-    name: texstudio
+- name: Install required fonts
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - otf-montserrat
+    - ttf-font-awesome-4
