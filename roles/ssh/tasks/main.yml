@@ -51,13 +51,3 @@
     state: directory
     owner: "{{ user.name }}"
     group: "{{ user.group }}"
-
-- name: Install user SSH key
-  copy:
-    content: "{{ item.content }}"
-    dest: /home/{{ user.name }}/.ssh/{{ item.name }}
-    mode: 0600
-    owner: "{{ user.name }}"
-    group: "{{ user.group }}"
-  when: ssh.keys is defined
-  with_items: "{{ ssh.key }}"
