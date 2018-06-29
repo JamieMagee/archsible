@@ -11,7 +11,8 @@
 - name: Install Oracle Java 8
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - jdk8
     - jdk8-docs
@@ -31,7 +32,8 @@
 - name: Install Oracle Java 11
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - jdk-devel
     - jdk-devel-docs

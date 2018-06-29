@@ -11,7 +11,8 @@
 - name: Install hunspell AUR packages
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - hunspell-da
   tags:
@@ -30,7 +31,8 @@
 - name: Install aspell AUR packages
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - aspell-da
   tags:

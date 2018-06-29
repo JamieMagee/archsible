@@ -52,7 +52,8 @@
 - name: Install AUR fonts
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - nerd-fonts-complete
     - ttf-emojione

@@ -9,6 +9,7 @@
 - name: Install masterpdfeditor
   aur:
     name: masterpdfeditor
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur

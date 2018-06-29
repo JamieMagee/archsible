@@ -2,6 +2,7 @@
 - name: Install Microsoft Teams
   aur:
     name: teams-for-linux
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur

@@ -42,7 +42,8 @@
 - name: Install pdsh
   aur:
     name: pdsh
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 
@@ -61,7 +62,8 @@
 - name: Install postman
   aur:
     name: postman-bin
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 

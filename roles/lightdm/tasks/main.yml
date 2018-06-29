@@ -6,7 +6,10 @@
 - name: Install LightDM Greeter
   aur:
     name: lightdm-webkit2-greeter
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
 
 - name: Enable LightDM
   systemd:

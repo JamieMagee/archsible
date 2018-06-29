@@ -2,27 +2,31 @@
 - name: Install kubectl
   aur:
     name: kubectl-bin
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 
 - name: Install minikube
   aur:
     name: minikube-bin
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 
 - name: Install helm
   aur:
     name: kubernetes-helm
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 
 - name: Install draft
   aur:
     name: draft-bin
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur

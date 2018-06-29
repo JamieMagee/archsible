@@ -2,7 +2,8 @@
 - name: Disabling GNOME Shell top left hot corner
   aur:
     name: gnome-shell-extension-no-topleft-hot-corner
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   when: "gnome.gnome_shell.disable_top_left_hot_corner"
   tags:
     - aur
@@ -21,17 +22,18 @@
     - gnome-shell-extensions
     - chrome-gnome-shell
 
-- name: Install GNOME shell extensions
-  aur:
-    name: "{{ item }}"
-    user: "{{ user.name }}"
-  with_items: "{{ gnome.extensions.packages }}"
-  tags:
-    - aur
+# - name: Install GNOME shell extensions
+#   aur:
+#     name: "{{ item }}"
+#   become: true
+#   become_user: "{{ user.name }}"
+#   with_items: "{{ gnome.extensions.packages }}"
+#   tags:
+#     - aur
 
-- name: Enable GNOME shell extensions
-  command: gnome-shell-extension-tool -e {{ item }}
-  register: gnome_extension
-  changed_when: "'is now enabled' in gnome_extension.stdout"
-  with_items:
-    - openweather-extension@jenslody.de
+# - name: Enable GNOME shell extensions
+#   command: gnome-shell-extension-tool -e {{ item }}
+#   register: gnome_extension
+#   changed_when: "'is now enabled' in gnome_extension.stdout"
+#   with_items:
+#     - openweather-extension@jenslody.de

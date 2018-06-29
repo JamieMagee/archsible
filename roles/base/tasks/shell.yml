@@ -6,7 +6,8 @@
 - name: Install fisherman
   aur:
     name: fisherman
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 

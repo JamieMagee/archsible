@@ -2,7 +2,8 @@
 - name: Install IntelliJ IDEA
   aur:
     name: intellij-idea-ultimate-edition
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
 

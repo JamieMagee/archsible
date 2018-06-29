@@ -8,7 +8,8 @@
 - name: Install GNOME themes
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - paper-icon-theme-git
     - adapta-gtk-theme-git

@@ -6,7 +6,8 @@
 - name: Install required fonts
   aur:
     name: "{{ item }}"
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   with_items:
     - otf-montserrat
     - ttf-font-awesome-4
