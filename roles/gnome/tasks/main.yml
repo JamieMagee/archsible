@@ -1,6 +1,4 @@
 ---
-# Using the builtin pacman module is not possible
-# because gdm-plymouth conflicts with gdm
 - name: Install GNOME
   pacman:
     name: gnome
