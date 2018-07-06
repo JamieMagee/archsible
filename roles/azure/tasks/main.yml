@@ -1,9 +1,12 @@
 ---
 - name: Install Azure command-line tools
   aur:
-    name: python-azure-cli
+    name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
+  with_items:
+    - python-azure-git # python-azure is no longer maintained
+    - python-azure-cli
   tags:
     - aur
 
