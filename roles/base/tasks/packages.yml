@@ -39,7 +39,6 @@
 - name: Install cower
   aur:
     name: cower
-    skip_pgp: true
   become: true
   become_user: "{{ user.name }}"
   tags:
