@@ -41,7 +41,7 @@
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
     - { role: media, tags: ['media'] }
-    - { role: laptop, tags: ['laptop'] } 
+    - { role: laptop, tags: ['laptop'] }
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"

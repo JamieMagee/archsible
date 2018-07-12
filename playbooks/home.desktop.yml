@@ -1,12 +1,12 @@
 ---
 - hosts: localhost
-  vars_files: 
+  vars_files:
     - vars/home.desktop.yml
   become: true
   roles:
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
-    - { role: hostname, tags: ['hostname'], when: "hostname is defined and hostname != ''" }
+    # - { role: hostname, tags: ['hostname'], when: "hostname is defined and hostname != ''" }
     - { role: mkinitcpio, tags: ['mkinitcpio'] }
     - { role: systemd-boot, tags: ['systemd-boot'], when: "systemd_boot is defined" }
     - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
@@ -40,7 +40,7 @@
     - { role: intellij, tags: ['intellij'] }
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
-    - { role: media, tags: ['media'] }    
+    - { role: media, tags: ['media'] }
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
