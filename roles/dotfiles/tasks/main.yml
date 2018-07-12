@@ -18,12 +18,6 @@
   become_user: "{{ user.name }}"
   when: "yadm_repo.stat.exists == False"
 
-- name: Decrypt encrypted dotfiles
-  command: "yadm decrypt"
-  become: true
-  become_user: "{{ user.name }}"
-  when: "yadm_repo.stat.exists == False"
-
 - name: Check yadm class
   command: "yadm config local.class"
   become: true
