@@ -41,7 +41,7 @@
     - aur
 
 - name: Check current default JDK
-  command: archlinux-java
+  command: archlinux-java get
   check_mode: false
   changed_when: false
   register: default_jdk
