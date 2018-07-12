@@ -4,6 +4,15 @@
     name: "{{ item }}"
   with_items: "{{ locale.generate }}"
 
+- name: Ensure locale.conf is empty
+  copy:
+    content: ""
+    dest: /etc/locale.conf
+    force: yes
+    group: root
+    owner: root
+    mode: 0644
+
 - name: Set system locale
   lineinfile:
     path: /etc/locale.conf
