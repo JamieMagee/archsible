@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
 
-Port {{ ssh.port }}
+Port {{ ssh.port | default('22') }}
 Protocol 2
 PermitRootLogin no
 PasswordAuthentication no
@@ -15,8 +15,7 @@ PubkeyAuthentication yes
 AuthenticationMethods publickey
 # Log sftp level file access (read/write/etc.) that would not be easily logged otherwise.
 Subsystem sftp /usr/lib/ssh/sftp-server -f AUTHPRIV -l INFO
-# Preferred algorithms from:
-https://infosec.mozilla.org/guidelines/openssh
+# Preferred algorithms from: https://infosec.mozilla.org/guidelines/openssh
 KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
 Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
