@@ -31,6 +31,8 @@
   vars:
     yadm:
       class: work
+    ssh:
+      enable_sshd: true
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
