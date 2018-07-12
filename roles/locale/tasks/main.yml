@@ -8,7 +8,7 @@
   copy:
     content: ""
     dest: /etc/locale.conf
-    force: yes
+    force: true
     group: root
     owner: root
     mode: 0644

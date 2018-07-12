@@ -59,7 +59,7 @@
     - ttf-carlito
     - ttf-courier-prime
     - ttf-emojione
-    #- ttf-heuristica
+    # - ttf-heuristica
     - ttf-impallari-cantora
     - ttf-merriweather
     - ttf-merriweather-sans
