@@ -1,5 +1,7 @@
 ---
 - hosts: localhost
+  vars_files: 
+    - vars/home.desktop.yml
   become: true
   roles:
     - { role: timezone, tags: ['timezone'] }
@@ -38,13 +40,7 @@
     - { role: intellij, tags: ['intellij'] }
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
-    - { role: media, tags: ['media'] }
-  vars:
-    yadm:
-      class: home
+    - { role: media, tags: ['media'] }    
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
-    - name: hostname
-      prompt: "Enter the desired hostname"
-      private: false

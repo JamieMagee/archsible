@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   become: true
+  vars_files:
+    - vars/work.laptop.yml
   roles:
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
@@ -41,12 +43,6 @@
     - { role: media, tags: ['media'] }
     - { role: laptop, tags: ['laptop'] }
     - { role: work, tags: ['work'] }
-  vars:
-    yadm:
-      class: work
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
-    - name: hostname
-      prompt: "Enter the desired hostname"
-      private: false

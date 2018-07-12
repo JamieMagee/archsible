@@ -1,6 +1,8 @@
 ---
 - hosts: localhost
   become: true
+  vars_files:
+    - vars/home.laptop.yml
   roles:
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
@@ -39,15 +41,7 @@
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
     - { role: media, tags: ['media'] }
-    - { role: laptop, tags: ['laptop'] }
-  vars:
-    yadm:
-      class: home
-    systemd_boot:
-      root: /dev/sda3
+    - { role: laptop, tags: ['laptop'] } 
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
-    - name: hostname
-      prompt: "Enter the desired hostname"
-      private: false

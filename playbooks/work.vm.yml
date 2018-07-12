@@ -27,15 +27,7 @@
     - { role: urlwatch, tags: ['urlwatch'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: intellij, tags: ['intellij'] }
-    - { role: work, tags: ['work'] }
-  vars:
-    yadm:
-      class: work
-    ssh:
-      enable_sshd: true
+    - { role: work, tags: ['work'] }    
   vars_prompt:
     - name: user_password
       prompt: "Enter desired user password"
-    - name: hostname
-      prompt: "Enter the desired hostname"
-      private: false
