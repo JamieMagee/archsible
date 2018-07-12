@@ -39,15 +39,14 @@
     name: "{{ item }}"
   with_items:
     - cantarell-fonts
-    - noto-fonts
-    - ttf-dejavu
-    - ttf-liberation
-    - ttf-symbola
     - gsfonts
+    - noto-fonts
     - tex-gyre-fonts
+    - ttf-dejavu
     - ttf-droid
-    - ttf-ubuntu-font-family
     - ttf-inconsolata
+    - ttf-liberation
+    - ttf-ubuntu-font-family
 
 - name: Install AUR fonts
   aur:
@@ -56,17 +55,18 @@
   become_user: "{{ user.name }}"
   with_items:
     - nerd-fonts-complete
-    - ttf-emojione
-    - ttf-signika
-    - ttf-quintessential
-    - ttf-oswald
-    - ttf-opensans
-    - ttf-merriweather-sans
-    - ttf-merriweather
-    - ttf-impallari-cantora
-    - ttf-carlito
     - ttf-caladea
+    - ttf-carlito
     - ttf-courier-prime
+    - ttf-emojione
     - ttf-heuristica
+    - ttf-impallari-cantora
+    - ttf-merriweather
+    - ttf-merriweather-sans
+    - ttf-opensans
+    - ttf-oswald
+    - ttf-quintessential
+    - ttf-signika
+    - ttf-symbola
   tags:
     - aur
