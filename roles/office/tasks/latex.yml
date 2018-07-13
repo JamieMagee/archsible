@@ -11,3 +11,9 @@
   with_items:
     - otf-montserrat
     - ttf-font-awesome-4
+
+- name: Install dependencies for latexindent
+  aur:
+    name: texlive-latexindent-meta
+  become: true
+  become_user: "{{ user.name }}"
