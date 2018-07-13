@@ -1,3 +1,4 @@
+---
 - name: Overwrite os-release
   copy:
     src: os-release
@@ -11,3 +12,21 @@
     group: root
     owner: root
     mode: 0644
+
+- name: Remove Antergos packages
+  pacman:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - antergos-mirrorlist
+    - antergos-alerts
+    - antergos-common-meta
+    - antergos-desktop-settings
+    - antergos-gnome-meta
+    - antergos-gnome-defaults-list
+    - antergos-keyring
+    - antergos-midnight-timers
+    - gnome-shell-extension-status-menu-buttons
+    - numix-icon-theme-square
+    - numix-icon-theme
+    - pamac
