@@ -3,13 +3,29 @@
   pacman:
     name: lightdm
 
-- name: Install LightDM Greeter
+- name: Install LightDM greeter
   aur:
     name: lightdm-webkit2-greeter
   become: true
   become_user: "{{ user.name }}"
   tags:
     - aur
+
+- name: Install LightDM theme
+  aur:
+    name: lightdm-webkit-theme-litarvan
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Copy LightDM Webkit greeter settings
+  copy:
+    src: lightdm-webkit2-greeter.conf
+    dest: /etc/lightdm/lightdm-webkit2-greeter.conf
+    group: root
+    owner: root
+    mode: 0644
 
 - name: Enable LightDM
   systemd:
