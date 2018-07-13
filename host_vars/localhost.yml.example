@@ -39,7 +39,7 @@ dotfiles: https://github.com/archsible/dotfiles.git
 aur:
     dir: aur
     packages:
-      - pikaur-git
+      - yay
 
 vscode:
   extensions:

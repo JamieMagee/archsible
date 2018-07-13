@@ -7,6 +7,14 @@
   tags:
     - aur
 
+- name: Install extension dependencies
+  aur:
+    name: "{{ item }}"
+  become: true
+  become_user: "{{ user.name}}"
+  with_items:
+    - shfmt
+
 - name: install extensions
   become: true
   become_user: "{{ user.name }}"
