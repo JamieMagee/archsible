@@ -1,0 +1,13 @@
+- name: Overwrite os-release
+  copy:
+    src: os-release
+    dest: /usr/lib/os-release
+
+- name: Overwrite arch-release
+  copy:
+    content: ""
+    dest: /etc/arch-release
+    force: true
+    group: root
+    owner: root
+    mode: 0644
