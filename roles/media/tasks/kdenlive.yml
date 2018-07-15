@@ -1,0 +1,27 @@
+---
+- name: Install kdenlive
+  aur:
+    name: kdenlive
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Jail kdenlive
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/kdenlive
+    state: link
+  tags:
+    - firejail
+
+- name: Copy kdenlive desktop file
+  copy:
+    src: /usr/share/applications/kdenlive.desktop
+    dest: "/home/{{ user.name }}/.local/share/applications/kdenlive.desktop"
+
+- name: Jail kdenlive desktop file
+  lineinfile:
+    path: "/home/{{ user.name }}/.local/share/applications/kdenlive.desktop"
+    regexp: "Exec=/usr/bin/kdenlive %U"
+    line: "Exec=kdenlive %U"
