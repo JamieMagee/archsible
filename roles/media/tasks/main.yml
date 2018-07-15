@@ -1,8 +1,13 @@
 ---
 - include: spotify.yml
-- include: darktable.yml
 - include: vlc.yml
 
 - name: Install youtube-dl
   pacman:
     name: youtube-dl
+
+- name: Install peek
+  aur:
+    name: peek
+  become: true
+  become_user: "{{ user.name }}"
