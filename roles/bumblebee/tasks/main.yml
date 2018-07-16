@@ -4,6 +4,7 @@
     name: "{{ item }}"
   with_items:
     - bumblebee
+    - bbswitch
     - mesa
     - primus
 
