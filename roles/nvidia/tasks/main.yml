@@ -1,0 +1,8 @@
+---
+- name: Install NVIDIA drivers
+  pacman:
+    name: nvidia
+
+- name: Install NVIDIA settings
+  pacman:
+    name: nvidia-settings
