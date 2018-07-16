@@ -4,7 +4,7 @@ Port {{ ssh.port | default('22') }}
 Protocol 2
 PermitRootLogin no
 PasswordAuthentication no
-X11Forwarding no
+X11Forwarding yes
 PrintMotd no
 PrintLastLog yes
 AllowUsers {{ user.name }}
