@@ -1,0 +1,22 @@
+---
+- name: Install Bumblebee and dependencies
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - bumblebee
+    - mesa
+    - primus
+
+- name: Add user to Bumblebee group
+  user:
+    name: "{{ user.name }}"
+    groups: bumblebee
+    append: true
+  tags:
+    - user
+
+- name: Enable and start Bumblebee service
+  systemd:
+    name: bumblebeed.service
+    enabled: true
+    state: started
