@@ -43,6 +43,3 @@
     - { role: media, tags: ['media'] }
     - { role: laptop, tags: ['laptop'] }
     - { role: work, tags: ['work'] }
-  vars_prompt:
-    - name: user_password
-      prompt: "Enter desired user password"
