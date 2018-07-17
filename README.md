@@ -14,13 +14,14 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 
 ## Installation
 
-1.  Copy `host_vars/localhost.example` to `host_vars/localhost`
-2.  Edit `localhost` for your own setup
-3.  Install the dependencies `pipenv install`
-4.  Activate the virtualenv `pipenv shell`
-5.  Install ansible galaxy roles `ansible-galaxy install -r requirements.yml -p galaxy`
-5.  Navigate to the `playbooks` directory
-6.  Run `ansible-playbook <playbook>.yml`
+1. `git clone https://github.com/JamieMagee/archsible.git --recurse-submodules`
+2.  Copy `host_vars/localhost.example` to `host_vars/localhost`
+3.  Edit `localhost` for your own setup
+4.  Install the dependencies `pipenv install`
+5.  Activate the virtualenv `pipenv shell`
+6.  Install ansible galaxy roles `ansible-galaxy install -r requirements.yml -p galaxy`
+7.  Navigate to the `playbooks` directory
+8.  Run `ansible-playbook <playbook>.yml`
 
 ## Development
 
