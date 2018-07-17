@@ -30,3 +30,12 @@
     - numix-icon-theme-square
     - numix-icon-theme
     - pamac
+
+- name: Remove Antergos repository
+  blockinfile:
+    path: /etc/pacman.conf
+    state: absent
+    block: |
+      [antergos]
+      SigLevel = PackageRequired
+      Include = /etc/pacman.d/antergos-mirrorlist
