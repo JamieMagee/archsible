@@ -1,0 +1,3 @@
+---
+- include: steam.yml
+- include: wine.yml

@@ -1,0 +1,23 @@
+---
+- name: Install wine
+  pacman:
+    name: wine
+
+- name: Install wine libraries
+  pacman:
+    name: "{{ item }}"
+  with_items:
+    - wine_gecko
+    - wine-mono
+
+- name: Install Winetricks
+  pacman:
+    name: winetricks
+
+- name: Install Lutris
+  aur:
+    name: lutris
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
