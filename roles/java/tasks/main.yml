@@ -61,3 +61,7 @@
     - gradle
     - gradle-doc
     - gradle-src
+
+- name: Install Jetty
+  pacman:
+    name: jetty
