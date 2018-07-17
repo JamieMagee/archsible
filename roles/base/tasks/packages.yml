@@ -1,4 +1,10 @@
 ---
+- name: Initialise the pacman keyring
+  command: /usr/bin/pacman-key --init
+
+- name: Populate the pacman keyring from the archlinux keying
+  command: /usr/bin/pacman-key --populate archlinux
+
 - name: Install universal base packages
   pacman:
     name: "{{ item }}"
