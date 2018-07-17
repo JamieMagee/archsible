@@ -1,7 +1,11 @@
 ---
 - name: Install NVIDIA drivers
   pacman:
-    name: nvidia
+    name: "{{ item }}"
+  with_items:
+    - nvidia
+    - nvidia-utils
+    - lib32-nvidia-utils
 
 - name: Install NVIDIA settings
   pacman:
