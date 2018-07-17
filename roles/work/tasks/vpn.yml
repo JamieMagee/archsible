@@ -3,11 +3,11 @@
   pacman:
     name: networkmanager-pptp
 
-- name: Install VPN config
-  template:
-    src: MSITVPN.j2
-    dest: /etc/NetworkManager/system-connections/MSITVPN
-    owner: root
-    group: root
-    mode: 0600
-  notify: Restart NetworkManager
+- name: Clone VPN setup git repo
+  become: true
+  become_user: "{{ user.name }}"
+  git:
+    repo: "{{ work.vpn.repo }}"
+    dest: "/home/{{ user.name }}/work/vpn"
+    accept_hostkey: true
+    version: "master"
