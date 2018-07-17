@@ -5,23 +5,6 @@
   tags:
     - user
 
-- name: Check if user exists
-  getent:
-    database: passwd
-    key: "{{ user.name }}"
-  register: user_exists
-  tags:
-    - user
-
-- name: Prompt for user password
-  prompt:
-    msg:
-      say: "Enter desired user password"
-      ask: user_password
-  when: "user_exists.msg is defined"
-  tags:
-    - user
-
 - name: Create user and assign to group
   user:
     name: "{{ user.name }}"
@@ -30,7 +13,6 @@
     update_password: on_create
     uid: "{{ user.uid }}"
     append: true
-  when: "user_exists.msg is defined"
   tags:
     - user
 

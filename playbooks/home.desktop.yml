@@ -43,3 +43,6 @@
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
     - { role: media, tags: ['media'] }
+  vars_prompt:
+    - name: user_password
+      prompt: "Enter desired user password"

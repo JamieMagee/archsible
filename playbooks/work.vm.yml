@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
+  become: true
   vars_files:
     - vars/work.vm.yml
-  become: true
   roles:
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
@@ -30,3 +30,6 @@
     - { role: vscode, tags: ['vscode'] }
     - { role: intellij, tags: ['intellij'] }
     - { role: work, tags: ['work'] }
+  vars_prompt:
+    - name: user_password
+      prompt: "Enter desired user password"
