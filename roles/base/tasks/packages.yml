@@ -1,9 +1,20 @@
 ---
 - name: Initialise the pacman keyring
   command: /usr/bin/pacman-key --init
+  tags:
+    - packages
 
 - name: Populate the pacman keyring from the archlinux keying
   command: /usr/bin/pacman-key --populate archlinux
+  tags:
+    - packages
+
+- name: Refresh package list and upgrade system
+  pacman:
+    upgrade: true
+    update_cache: true
+  tags:
+    - packages
 
 - name: Install universal base packages
   pacman:
