@@ -14,6 +14,11 @@
   tags:
     - aur
 
+- name: Install wallpaper
+  copy:
+    src: wallpaper.jpg
+    dest: /usr/share/backgrounds/wallpaper.jpg
+
 - include: dconf.yml
 - include: gtk.yml
 - include: extensions.yml
