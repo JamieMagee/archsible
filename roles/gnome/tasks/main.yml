@@ -16,8 +16,8 @@
 
 - name: Install wallpaper
   copy:
-    src: wallpaper.jpg
-    dest: /usr/share/backgrounds/wallpaper.jpg
+    src: background.jpg
+    dest: /usr/share/backgrounds/background.jpg
 
 - include: dconf.yml
 - include: gtk.yml

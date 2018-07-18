@@ -37,3 +37,8 @@
     path: /boot/loader/entries/arch.conf
     regexp: '(^options(\s+(?!quiet splash udev\.log_priority=3)[\w=\-\.\,\_]+)*)\s*$'
     replace: '\1 quiet splash udev.log_priority=3'
+
+- name: Change LightDM background
+  copy:
+    src: background.jpg
+    dest: /usr/share/lightdm-webkit/themes/litarvan/images/background.jpg
