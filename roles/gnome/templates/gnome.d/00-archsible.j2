@@ -41,6 +41,9 @@ disable-while-typing={{ gnome.touchpad.disabled_while_typing | ternary('true', '
 [org/gnome/desktop/wm/preferences]
 focus-mode='sloppy'
 
+[org/gnome/shell]
+favorite-apps={{ gnome.favourites }}
+
 # Power settings
 [org/gnome/settings-daemon/plugins/power]
 sleep-inactive-ac-timeout={{ gnome.power.sleep_timeout_when_computer_on_ac | default(3600) }}
@@ -57,6 +60,10 @@ status-message-enabled={{ gnome.lock_screen.show_notifications | ternary('true',
 show-full-name-in-top-bar={{ gnome.lock_screen.show_full_name_of_user | ternary('true', 'false') }}
 
 # Extension settings
+# Dash-To-Dock
+[org/gnome/shell/extensions/dash-to-dock]
+dock-position='BOTTOM'
+
 # Openweather
 [org/gnome/shell/extensions/openweather]
 weather-provider='{{ gnome.extensions.weather.provider }}'
