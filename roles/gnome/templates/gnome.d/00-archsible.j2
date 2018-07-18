@@ -29,7 +29,7 @@ document-font-name='{{ gnome.theme.font_name }}'
 monospace-font-name='{{ gnome.theme.mono_font_name }}'
 
 # Keyboard settings
-[/org/gnome/desktop/input-sources]
+[org/gnome/desktop/input-sources]
 sources={{ gnome.input_sources }}
 
 # Touchpad settings
@@ -58,7 +58,7 @@ show-full-name-in-top-bar={{ gnome.lock_screen.show_full_name_of_user | ternary(
 
 # Extension settings
 # Openweather
-[/org/gnome/shell/extensions/openweather]
+[org/gnome/shell/extensions/openweather]
 weather-provider='{{ gnome.extensions.weather.provider }}'
 days-forecast={{ gnome.extensions.weather.days_forecast }}
 unit='{{ gnome.extensions.weather.unit }}'
@@ -69,5 +69,6 @@ city='{{ gnome.extensions.weather.city }}'
 decimal-places={{ gnome.extensions.weather.decimal_places }}
 
 # Terminal settings
-[/org/gnome/terminal/legacy]
-theme-variant='light'
+[org/gnome/terminal/legacy]
+theme-variant='dark'
+default-show-menubar=false
