@@ -25,3 +25,11 @@
   become_user: "{{ user.name }}"
   tags:
     - aur
+
+- name: Install Azure Storage Emulator
+  aur:
+    name: nodejs-azurite
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
