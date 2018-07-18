@@ -1,0 +1,32 @@
+---
+- name: Install GIMP
+  pacman:
+    name: gimp
+  tags:
+    - gimp
+
+- name: Jail GIMP
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/gimp
+    state: link
+  tags:
+    - gimp
+    - firejail
+
+- name: Copy GIMP desktop file
+  copy:
+    src: /usr/share/applications/gimp.desktop
+    dest: "/home/{{ user.name }}/.local/share/applications/gimp.desktop"
+  tags:
+    - gimp
+    - firejail
+
+- name: Jail GIMP desktop file
+  lineinfile:
+    path: "/home/{{ user.name }}/.local/share/applications/gimp.desktop"
+    regexp: "^Exec=gimp-\\d\\.\\d{1,2} %U$"
+    line: "Exec=gimp %U"
+  tags:
+    - gimp
+    - firejail

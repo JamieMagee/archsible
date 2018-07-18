@@ -1,6 +1,7 @@
 ---
 - include: spotify.yml
 - include: vlc.yml
+- include: gimp.yml
 - include: kdenlive.yml
 
 - name: Install youtube-dl
