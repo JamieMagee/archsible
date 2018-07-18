@@ -54,7 +54,8 @@
   become: true
   become_user: "{{ user.name }}"
   with_items:
-    - nerd-fonts-complete
+    - nerd-fonts-fira-mono
+    - nerd-fonts-fira-mono
     - ttf-caladea
     - ttf-carlito
     - ttf-courier-prime
