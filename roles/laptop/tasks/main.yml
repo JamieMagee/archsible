@@ -39,3 +39,11 @@
     enabled: true
   tags:
     - tlp
+
+- name: Install libinput-gestures package
+  aur:
+    name: libinput-gestures
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
