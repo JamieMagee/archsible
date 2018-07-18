@@ -7,6 +7,10 @@
   tags:
     - aur
 
+- name: Install breeze icons
+  pacman:
+    name: breeze-icons
+
 - name: Jail kdenlive
   file:
     src: /usr/bin/firejail
@@ -14,14 +18,3 @@
     state: link
   tags:
     - firejail
-
-- name: Copy kdenlive desktop file
-  copy:
-    src: /usr/share/applications/kdenlive.desktop
-    dest: "/home/{{ user.name }}/.local/share/applications/kdenlive.desktop"
-
-- name: Jail kdenlive desktop file
-  lineinfile:
-    path: "/home/{{ user.name }}/.local/share/applications/kdenlive.desktop"
-    regexp: "Exec=/usr/bin/kdenlive %U"
-    line: "Exec=kdenlive %U"
