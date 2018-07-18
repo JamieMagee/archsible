@@ -1,2 +1,3 @@
 ---
-- include: chrome.yml
+# - include: chrome.yml
+- include: chromium.yml
