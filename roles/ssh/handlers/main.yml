@@ -3,4 +3,3 @@
   systemd:
     name: sshd.socket
     state: restarted
-  when: ssh.enable_sshd == True

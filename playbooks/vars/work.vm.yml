@@ -1,8 +1,5 @@
 ---
 hostname: jamagee-vm
 
-ssh:
-  enable_sshd: true
-
 yadm:
   class: work

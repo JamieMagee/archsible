@@ -20,9 +20,16 @@
   tags:
     - firewall
 
+- name: Add custom ufw rules
+  template:
+    src: custom.j2
+    dest: /etc/ufw/applications.d/custom
+  tags:
+    - firewall
+
 - name: Allow SSH
   ufw:
     rule: limit
-    name: SSH
+    name: my-SSH
   tags:
     - firewall

@@ -26,15 +26,6 @@
     enabled: true
     state: started
     daemon_reload: true
-  when: ssh.enable_sshd == True
-
-- name: Disable and stop OpenSSH
-  systemd:
-    name: sshd.socket
-    enabled: false
-    state: stopped
-    daemon_reload: true
-  when: ssh.enable_sshd == False
 
 - name: Copy fuse configuration file
   copy:
