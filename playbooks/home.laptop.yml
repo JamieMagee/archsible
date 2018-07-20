@@ -13,6 +13,7 @@
     - { role: base, tags: ['base'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: ssh, tags: ['ssh'] }
+    - { role: firewall, tags: ['firewall'] }
     - { role: ssd, tags: ['ssd'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: nettools, tags: ['nettools'] }

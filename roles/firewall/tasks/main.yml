@@ -1,1 +1,28 @@
 ---
+- name: Install ufw
+  pacman:
+    name: ufw
+  tags:
+    - firewall
+
+- name: Enable and start ufw systemd service
+  systemd:
+    name: ufw.service
+    enabled: true
+    state: started
+  tags:
+    - firewall
+
+- name: Enable ufw
+  ufw:
+    state: enabled
+    policy: deny
+  tags:
+    - firewall
+
+- name: Allow SSH
+  ufw:
+    rule: limit
+    name: SSH
+  tags:
+    - firewall
