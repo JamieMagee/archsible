@@ -7,6 +7,8 @@
     - jdk8-openjdk
     - openjdk8-doc
     - openjdk8-src
+  tags:
+    - java
 
 - name: Install Oracle Java 8
   aur:
@@ -18,6 +20,7 @@
     - jdk8-docs
   tags:
     - aur
+    - java
 
 # Current release
 - name: Install OpenJDK 10
@@ -27,6 +30,8 @@
     - jdk10-openjdk
     - openjdk10-doc
     - openjdk10-src
+  tags:
+    - java
 
 # Next release
 - name: Install Oracle Java 11
@@ -39,20 +44,27 @@
     - jdk-devel-docs
   tags:
     - aur
+    - java
 
 - name: Check current default JDK
   command: archlinux-java get
   check_mode: false
   changed_when: false
   register: default_jdk
+  tags:
+    - java
 
 - name: Set default JDK
   command: archlinux-java set java-8-jdk
   when: "default_jdk.stdout != 'java-8-jdk'"
+  tags:
+    - java
 
 - name: Install Maven
   pacman:
     name: maven
+  tags:
+    - java
 
 - name: Install Gradle
   pacman:
@@ -61,7 +73,14 @@
     - gradle
     - gradle-doc
     - gradle-src
+  tags:
+    - java
 
 - name: Install Jetty
-  pacman:
+  aur:
     name: jetty
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
+    - java
