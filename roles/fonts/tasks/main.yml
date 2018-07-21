@@ -46,6 +46,7 @@
     - ttf-droid
     - ttf-inconsolata
     - ttf-liberation
+    - ttf-roboto
     - ttf-ubuntu-font-family
 
 - name: Install AUR fonts
@@ -54,7 +55,7 @@
   become: true
   become_user: "{{ user.name }}"
   with_items:
-    - nerd-fonts-fira-mono
+    - nerd-fonts-fira-code
     - nerd-fonts-fira-mono
     - ttf-caladea
     - ttf-carlito
