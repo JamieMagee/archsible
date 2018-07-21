@@ -39,3 +39,37 @@
       [antergos]
       SigLevel = PackageRequired
       Include = /etc/pacman.d/antergos-mirrorlist
+
+- name: Remove backup boot entry
+  file:
+    path: /boot/loader/entries/antergos-fallback.conf
+    state: absent
+
+- name: Check if bootentry exists
+  stat:
+    path: /boot/loader/entries/antergos.conf
+  register: boot_entry
+
+- name: Move main boot entry
+  copy:
+    remote_src: true
+    src: /boot/loader/entries/antergos.conf
+    dest: /boot/loader/entries/arch.conf
+  when: "boot_entry.stat.exists == True"
+
+- name: Remove old boot entry
+  file:
+    path: /boot/loader/entries/antergos.conf
+    state: absent
+
+- name: Rename boot entry
+  replace:
+    path: /boot/loader/entries/arch.conf
+    regexp: "Antergos"
+    replace: "Arch Linux"
+
+- name: Update default boot entry
+  replace:
+    path: /boot/loader/loader.conf
+    regexp: "antergos"
+    replace: "arch"
