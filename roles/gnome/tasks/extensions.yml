@@ -37,3 +37,5 @@
   changed_when: "'is now enabled' in gnome_extension.stdout"
   failed_when: false
   with_items: "{{ gnome.extensions.enabled }}"
+  become: true
+  become_user: "{{ user.name }}"
