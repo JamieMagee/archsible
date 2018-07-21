@@ -3,6 +3,10 @@
   pacman:
     name: gnome
 
+- name: Install GNOME tweaks
+  pacman:
+    name: gnome-tweaks
+
 - name: Install GNOME themes
   aur:
     name: "{{ item }}"
