@@ -3,7 +3,7 @@
   become: true
   become_user: "{{ user.name }}"
   git:
-    repo: "{{ work.vpn.repo }}"
+    repo: "{{ work.wifi.repo }}"
     dest: "/home/{{ user.name }}/work/wifi"
     accept_hostkey: true
     version: "master"
