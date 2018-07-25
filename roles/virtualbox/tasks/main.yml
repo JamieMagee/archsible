@@ -5,7 +5,7 @@
   with_items:
     - virtualbox
     - virtualbox-guest-iso
-    - virtualbox-host-dkms
+    - virtualbox-host-modules-arch
 
 - name: Install VirtualBox extensions
   aur:
