@@ -1,7 +1,7 @@
 ---
 - name: Install IntelliJ IDEA
   aur:
-    name: intellij-idea-ultimate-edition
+    name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
   with_items:
