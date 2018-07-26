@@ -4,6 +4,9 @@
     name: intellij-idea-ultimate-edition
   become: true
   become_user: "{{ user.name }}"
+  with_items:
+    - intellij-idea-ultimate-edition
+    - intellij-idea-ultimate-edition-jre
   tags:
     - aur
 
