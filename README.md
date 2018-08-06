@@ -9,37 +9,26 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 
 ## Requirements
 
-* [python](https://www.archlinux.org/packages/?name=python)
-* [python-pipenv](https://www.archlinux.org/packages/?name=python-pipenv)
+* [`ansible`](https://www.archlinux.org/packages/community/any/ansible/)
+* [`python-passlib`](https://www.archlinux.org/packages/community/any/python-passlib/)
 
 ## Installation
 
 1. `git clone https://github.com/JamieMagee/archsible.git --recurse-submodules`
 2.  Copy `host_vars/localhost.example` to `host_vars/localhost`
 3.  Edit `localhost` for your own setup
-4.  Install the dependencies `pipenv install`
-5.  Activate the virtualenv `pipenv shell`
-6.  Install ansible galaxy roles `ansible-galaxy install -r requirements.yml -p galaxy`
-7.  Navigate to the `playbooks` directory
-8.  Run `ansible-playbook <playbook>.yml`
+4.  Install ansible galaxy roles `ansible-galaxy install -r requirements.yml -p galaxy`
+5.  Navigate to the `playbooks` directory
+6.  Run `ansible-playbook <playbook>.yml`
 
 ## Development
 
-### Installation
+### Requirements
 
-Install from Pipfile:
-
-```sh
-pipenv install --dev
-```
+* [`ansible-lint`](https://www.archlinux.org/packages/community/any/ansible-lint/)
+* [`yamllint`](https://aur.archlinux.org/packages/yamllint/)
 
 ### Testing
-
-Activate the Pipenv shell:
-
-```sh
-pipenv shell
-```
 
 Run:
 
