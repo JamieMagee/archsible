@@ -1,0 +1,25 @@
+- name: Install GDM
+  pacman:
+    name: gdm
+
+- name: Enable and start gdm.service
+  systemd:
+    name: gdm.service
+    enabled: true
+    state: started
+
+# Fixes bluetooth issues
+- name: Create GDM systemd config directory
+  file:
+    name: /var/lib/gdm/.config/systemd/user/
+    state: directory
+    owner: gdm
+    group: gdm
+    mode: 0755
+    recurse: true
+
+- name: Disable GDM pulseaudio instance
+  file:
+    src: /dev/null
+    dest: /var/lib/gdm/.config/systemd/user/pulseaudio.socket
+    state: link
