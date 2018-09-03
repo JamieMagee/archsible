@@ -5,30 +5,6 @@
   tags:
     - chromium
 
-- name: Jail Chromium
-  file:
-    src: /usr/bin/firejail
-    dest: /usr/local/bin/chromium
-    state: link
-  tags:
-    - chromium
-    - firejail
-
-- name: Copy Chromium desktop file
-  copy:
-    src: /usr/share/applications/chromium.desktop
-    dest: "/home/{{ user.name }}/.local/share/applications/chromium.desktop"
-  tags:
-    - chromium
-
-- name: Jail Chromium desktop file
-  lineinfile:
-    path: "/home/{{ user.name }}/.local/share/applications/chromium.desktop"
-    regexp: "/usr/bin/chromium"
-    line: "chromium"
-  tags:
-    - chromium
-
 - name: Install Flash player
   pacman:
     name: pepper-flash
