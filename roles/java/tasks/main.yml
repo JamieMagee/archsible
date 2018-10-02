@@ -2,22 +2,15 @@
 # Most recent LTS releases (OpenJDK and Oracle)
 - name: Install OpenJDK Java 8
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - jdk8-openjdk
-    - openjdk8-doc
-    - openjdk8-src
+    name: jdk8-openjdk
   tags:
     - java
 
 - name: Install Oracle Java 8
   aur:
-    name: "{{ item }}"
+    name: jdk8
   become: true
-  become_user: "{{ user.name }}"
-  with_items:
-    - jdk8
-    - jdk8-docs
+  become_user: '{{ user.name }}'
   tags:
     - aur
     - java
@@ -25,23 +18,16 @@
 # Current release
 - name: Install OpenJDK 10
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - jdk10-openjdk
-    - openjdk10-doc
-    - openjdk10-src
+    name: jdk10-openjdk
   tags:
     - java
 
 # Next release
-- name: Install Oracle Java 11
+- name: Install OpenJDK 12
   aur:
-    name: "{{ item }}"
+    name: openjdk-devel
   become: true
-  become_user: "{{ user.name }}"
-  with_items:
-    - jdk-devel
-    - jdk-devel-docs
+  become_user: '{{ user.name }}'
   tags:
     - aur
     - java
@@ -68,11 +54,7 @@
 
 - name: Install Gradle
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - gradle
-    - gradle-doc
-    - gradle-src
+    name: gradle
   tags:
     - java
 
@@ -80,7 +62,7 @@
   aur:
     name: jetty
   become: true
-  become_user: "{{ user.name }}"
+  become_user: '{{ user.name }}'
   tags:
     - aur
     - java
