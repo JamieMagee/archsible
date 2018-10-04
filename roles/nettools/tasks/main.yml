@@ -81,3 +81,11 @@
 - name: Install speedtest-cli
   pacman:
     name: speedtest-cli
+
+- name: Install ngrok
+  aur:
+    name: ngrok
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
