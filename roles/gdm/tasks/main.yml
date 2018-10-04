@@ -2,11 +2,10 @@
   pacman:
     name: gdm
 
-- name: Enable and start gdm.service
+- name: Enable gdm.service
   systemd:
     name: gdm.service
     enabled: true
-    state: started
 
 # Fixes bluetooth issues
 - name: Create GDM systemd config directory
