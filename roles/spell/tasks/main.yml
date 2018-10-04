@@ -4,7 +4,7 @@
     name: "{{ item }}"
   with_items:
     - hunspell
-    - hunspell-en
+    - hunspell-en_GB
   tags:
     - hunspell
 
