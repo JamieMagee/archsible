@@ -18,8 +18,7 @@
 
 - name: Install universal base packages
   pacman:
-    name: "{{ item }}"
-  with_items: "{{ base_packages }}"
+    name: "{{ base_packages }}"
   tags:
     - packages
 
@@ -68,7 +67,7 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items: "{{ aur.packages }}"
+  loop: "{{ aur.packages }}"
   tags:
     - aur
     - packages

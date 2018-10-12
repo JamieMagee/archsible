@@ -12,7 +12,7 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items:
+  loop:
     - paper-icon-theme-git
     - adapta-gtk-theme-git
   tags:

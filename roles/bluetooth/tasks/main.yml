@@ -1,14 +1,13 @@
 ---
 - name: Install bluetooth libraries and tools
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - pulseaudio-bluetooth
-    - bluez
-    - bluez-libs
-    - bluez-utils
-    - bluez-firmware
-    - blueman
+    name:
+      - pulseaudio-bluetooth
+      - bluez
+      - bluez-libs
+      - bluez-utils
+      - bluez-firmware
+      - blueman
   notify:
     - restart pulse as user
 

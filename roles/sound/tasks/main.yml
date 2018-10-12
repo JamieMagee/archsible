@@ -5,11 +5,10 @@
 
 - name: Install PulseAudio
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - pulseaudio
-    - pulseaudio-alsa
-    - pavucontrol
+    name:
+      - pulseaudio
+      - pulseaudio-alsa
+      - pavucontrol
 
 - name: Switch output to newly connected devices
   lineinfile:

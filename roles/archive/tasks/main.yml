@@ -1,11 +1,10 @@
 ---
 - name: Install zip archive utilities
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - zip
-    - unzip
-    - p7zip
+    name:
+      - zip
+      - unzip
+      - p7zip
   tags:
     - zip
 

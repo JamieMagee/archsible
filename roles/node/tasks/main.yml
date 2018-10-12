@@ -5,14 +5,12 @@
 
 - name: Install package managers
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - npm
-    - yarn
+    name:
+      - npm
+      - yarn
 
 - name: Install task runners
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - gulp
-    - grunt-cli
+    name:
+      - gulp
+      - grunt-cli

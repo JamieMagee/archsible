@@ -4,7 +4,7 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items:
+  loop:
     - python-azure-git  # python-azure is no longer maintained
     - python-azure-cli
   tags:

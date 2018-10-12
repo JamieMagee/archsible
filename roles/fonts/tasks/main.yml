@@ -36,25 +36,24 @@
 
 - name: Install core fonts
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - cantarell-fonts
-    - gsfonts
-    - noto-fonts
-    - tex-gyre-fonts
-    - ttf-dejavu
-    - ttf-droid
-    - ttf-inconsolata
-    - ttf-liberation
-    - ttf-roboto
-    - ttf-ubuntu-font-family
+    name:
+      - cantarell-fonts
+      - gsfonts
+      - noto-fonts
+      - tex-gyre-fonts
+      - ttf-dejavu
+      - ttf-droid
+      - ttf-inconsolata
+      - ttf-liberation
+      - ttf-roboto
+      - ttf-ubuntu-font-family
 
 - name: Install AUR fonts
   aur:
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items:
+  loop:
     - nerd-fonts-fira-code
     - nerd-fonts-fira-mono
     - ttf-caladea

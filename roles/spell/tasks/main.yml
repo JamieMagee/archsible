@@ -1,10 +1,9 @@
 ---
 - name: Install hunspell
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - hunspell
-    - hunspell-en_GB
+    name:
+      - hunspell
+      - hunspell-en_GB
   tags:
     - hunspell
 
@@ -13,7 +12,7 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items:
+  loop:
     - hunspell-da
   tags:
     - hunspell
@@ -21,10 +20,9 @@
 
 - name: Install aspell
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - aspell
-    - aspell-en
+    name:
+      - aspell
+      - aspell-en
   tags:
     - aspell
 
@@ -33,7 +31,7 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items:
+  loop:
     - aspell-da
   tags:
     - aspell

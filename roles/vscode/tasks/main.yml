@@ -12,13 +12,13 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name}}"
-  with_items:
+  loop:
     - shfmt
 
 - name: install extensions
   become: true
   become_user: "{{ user.name }}"
-  with_items: "{{ vscode.extensions }}"
+  loop: "{{ vscode.extensions }}"
   command: "code --install-extension '{{ item }}'"
   register: vscode_result
   changed_when: "'already installed' not in vscode_result.stdout"

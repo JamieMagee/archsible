@@ -1,12 +1,11 @@
 ---
 - name: Install TLP
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - x86_energy_perf_policy
-    - ethtool
-    - tlp
-    - tlp-rdw
+    name:
+      - x86_energy_perf_policy
+      - ethtool
+      - tlp
+      - tlp-rdw
   tags:
     - tlp
 

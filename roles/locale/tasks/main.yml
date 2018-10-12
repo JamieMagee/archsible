@@ -2,7 +2,7 @@
 - name: Generate locales
   locale_gen:
     name: "{{ item }}"
-  with_items: "{{ locale.generate }}"
+  loop: "{{ locale.generate }}"
 
 - name: Ensure locale.conf is empty
   copy:

@@ -1,12 +1,11 @@
 ---
 - name: Install Bumblebee and dependencies
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - bumblebee
-    - bbswitch
-    - mesa
-    - primus
+    name:
+      - bumblebee
+      - bbswitch
+      - mesa
+      - primus
 
 - name: Add user to Bumblebee group
   user:

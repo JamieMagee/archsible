@@ -5,10 +5,9 @@
 
 - name: Install wine libraries
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - wine_gecko
-    - wine-mono
+    name:
+      - wine_gecko
+      - wine-mono
 
 - name: Install Winetricks
   pacman:

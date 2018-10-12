@@ -14,7 +14,7 @@
 - name: Install fisherman packages
   become: true
   become_user: "{{ user.name }}"
-  with_items: "{{ fisherman.packages }}"
+  loop: "{{ fisherman.packages }}"
   command: /usr/bin/fish -c 'fisher "{{ item }}"'
   register: fisherman_result
   changed_when: "'No plugins to install or dependencies missing.' not in fisherman_result.stderr"

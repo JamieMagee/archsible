@@ -1,10 +1,9 @@
 ---
 - name: Install OpenVPN
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - openvpn
-    - networkmanager-openvpn
+    name:
+      - openvpn
+      - networkmanager-openvpn
 
 - name: Install MTR
   pacman:

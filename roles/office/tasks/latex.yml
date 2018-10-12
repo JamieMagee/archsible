@@ -8,7 +8,7 @@
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items:
+  loop:
     - otf-montserrat
     - ttf-font-awesome-4
 

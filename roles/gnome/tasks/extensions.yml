@@ -16,18 +16,17 @@
 
 - name: Configuring GNOME Shell Extensions support
   pacman:
-    name: "{{ item }}"
+    name:
+      - gnome-shell-extensions
+      - chrome-gnome-shell
     state: '{{ "present" if gnome.gnome_shell.extensions_support else "absent" }}'
-  with_items:
-    - gnome-shell-extensions
-    - chrome-gnome-shell
 
 - name: Install GNOME shell extensions
   aur:
     name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
-  with_items: "{{ gnome.extensions.packages }}"
+  loop: "{{ gnome.extensions.packages }}"
   tags:
     - aur
 
@@ -36,6 +35,6 @@
   register: gnome_extension
   changed_when: "'is now enabled' in gnome_extension.stdout"
   failed_when: false
-  with_items: "{{ gnome.extensions.enabled }}"
+  loop: "{{ gnome.extensions.enabled }}"
   become: true
   become_user: "{{ user.name }}"

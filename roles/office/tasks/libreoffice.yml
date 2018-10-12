@@ -5,10 +5,9 @@
 
 - name: Install LibreOffice language packs
   pacman:
-    name: "{{ item }}"
-  with_items:
-    - libreoffice-fresh-en-gb
-    - libreoffice-fresh-da
+    name:
+      - libreoffice-fresh-en-gb
+      - libreoffice-fresh-da
 
 - name: Jail LibreOffice
   file:

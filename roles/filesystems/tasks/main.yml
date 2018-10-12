@@ -1,5 +1,4 @@
 ---
 - name: Install filesystem packages
   pacman:
-    name: "{{ item }}"
-  with_items: "{{ filesystem_packages }}"
+    name: "{{ filesystem_packages }}"
