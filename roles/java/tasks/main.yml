@@ -16,9 +16,9 @@
     - java
 
 # Current release
-- name: Install OpenJDK 10
+- name: Install OpenJDK 11
   pacman:
-    name: jdk10-openjdk
+    name: jdk-openjdk
   tags:
     - java
 
