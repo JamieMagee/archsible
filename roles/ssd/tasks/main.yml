@@ -4,4 +4,3 @@
     name: fstrim.timer
     enabled: true
     state: started
-  when: "hdparm.rc == 0"
