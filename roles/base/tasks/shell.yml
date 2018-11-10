@@ -15,6 +15,6 @@
   become: true
   become_user: "{{ user.name }}"
   loop: "{{ fisher.packages }}"
-  command: /usr/bin/fish -c 'fisher "{{ item }}"'
+  command: /usr/bin/fish -c 'fisher add "{{ item }}"'
   register: fisher_result
   changed_when: "'No plugins to install or dependencies missing.' not in fisher_result.stderr"
