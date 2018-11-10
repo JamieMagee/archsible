@@ -3,18 +3,18 @@
   pacman:
     name: fish
 
-- name: Install fisherman
+- name: Install fisher
   aur:
-    name: fisherman
+    name: fisher
   become: true
   become_user: "{{ user.name }}"
   tags:
     - aur
 
-- name: Install fisherman packages
+- name: Install fisher packages
   become: true
   become_user: "{{ user.name }}"
-  loop: "{{ fisherman.packages }}"
+  loop: "{{ fisher.packages }}"
   command: /usr/bin/fish -c 'fisher "{{ item }}"'
-  register: fisherman_result
-  changed_when: "'No plugins to install or dependencies missing.' not in fisherman_result.stderr"
+  register: fisher_result
+  changed_when: "'No plugins to install or dependencies missing.' not in fisher_result.stderr"

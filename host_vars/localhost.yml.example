@@ -24,7 +24,7 @@ user:
       dir: log
       rotate: 8
 
-fisherman:
+fisher:
   packages:
     - omf/theme-bobthefish
 
