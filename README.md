@@ -19,6 +19,8 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 3. Edit `localhost` for your own setup
 4. Install ansible galaxy roles `ansible-galaxy install -r requirements.yml -p galaxy`
 5. Run `ansible-playbook playbooks/<playbook>.yml`
+6. Update donf db `sudo dconf update`
+7. Reboot
 
 ## Development
 
