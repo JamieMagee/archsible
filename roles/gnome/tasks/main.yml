@@ -23,6 +23,11 @@
     src: background.jpg
     dest: /usr/share/backgrounds/background.jpg
 
+- name: Copy avatar
+  copy:
+    src: face.png
+    dest: "/home/{{ user.name }}/.face"
+
 - include: dconf.yml
 - include: gtk.yml
 - include: extensions.yml
