@@ -71,3 +71,10 @@
     - ttf-symbola
   tags:
     - aur
+
+- name: Enable EmojiOne fonts
+  file:
+    src: "../conf.avail/75-emojione.conf"
+    dest: /etc/fonts/conf.d/75-emojione.conf
+    state: link
+    force: true
