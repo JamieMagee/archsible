@@ -1,10 +1,4 @@
 ---
-- name: Install OpenVPN
-  pacman:
-    name:
-      - openvpn
-      - networkmanager-openvpn
-
 - name: Install MTR
   pacman:
     name: mtr
