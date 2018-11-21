@@ -1,0 +1,26 @@
+[connection]
+id=home
+uuid=e9bff599-42a0-43ba-9c25-49adec856a2a
+type=vpn
+autoconnect=false
+permissions=user:{{ user.name }}:;
+
+[vpn]
+gateway={{ vpn.gateway }}
+ipsec-enabled=yes
+ipsec-psk={{ vpn.psk }}
+password-flags=0
+user={{ vpn.username }}
+service-type=org.freedesktop.NetworkManager.l2tp
+
+[vpn-secrets]
+password={{ vpn.password }}
+
+[ipv4]
+dns-search=
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=
+method=auto

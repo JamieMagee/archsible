@@ -1,0 +1,20 @@
+---
+- name: Install networkmanager-l2tp and dependencies
+  aur:
+    name: "{{ item }}"
+  become: true
+  become_user: "{{ user.name }}"
+  loop:
+    - networkmanager-l2tp
+    - libreswan
+  tags:
+    - aur
+
+- name: Copy VPN configuration
+  template:
+    src: home.nmconnection.j2
+    dest: /etc/NetworkManager/system-connections/home.nmconnection
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart NetworkManager
