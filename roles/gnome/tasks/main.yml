@@ -28,6 +28,13 @@
     src: face.png
     dest: "/home/{{ user.name }}/.face"
 
+- name: Apply blueman workaround
+  copy:
+    src: 90-nopasswd_blueman.rules
+    dest: /etc/polkit-1/rules.d/90-nopasswd_blueman.rules
+  tags:
+    - blueman
+
 - include: dconf.yml
 - include: gtk.yml
 - include: extensions.yml
