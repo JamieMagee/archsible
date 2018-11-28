@@ -18,9 +18,9 @@
   tags:
     - aur
 
-- name: Install SQL Operations Studio
+- name: Install Azure Data Studio
   aur:
-    name: sqlops
+    name: azuredatastudio
   become: true
   become_user: "{{ user.name }}"
   tags:
