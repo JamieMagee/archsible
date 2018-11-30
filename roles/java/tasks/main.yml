@@ -1,31 +1,33 @@
 ---
-# Most recent LTS releases (OpenJDK and Oracle)
+# OpenJDK 8
 - name: Install OpenJDK Java 8
   pacman:
-    name: jdk8-openjdk
+    name: "{{ item }}"
+  loop:
+    - jdk8-openjdk
+    - openjdk8-doc
+    - openjdk8-src
   tags:
-    - java
-
-- name: Install Oracle Java 8
-  aur:
-    name: jdk8
-  become: true
-  become_user: '{{ user.name }}'
-  tags:
-    - aur
     - java
 
 # Current release
+# LTS release
 - name: Install OpenJDK 11
   pacman:
-    name: jdk-openjdk
+    name: "{{ item }}"
+  loop:
+    - jdk-openjdk
+    - openjdk-doc
+    - openjdk-src
   tags:
     - java
 
 # Next release
 - name: Install OpenJDK 12
   aur:
-    name: openjdk-devel
+    name: "{{ item }}"
+  loop:
+    - openjdk12
   become: true
   become_user: '{{ user.name }}'
   tags:
@@ -41,8 +43,8 @@
     - java
 
 - name: Set default JDK
-  command: archlinux-java set java-8-jdk
-  when: "default_jdk.stdout != 'java-8-jdk'"
+  command: archlinux-java set java-8-openjdk
+  when: "default_jdk.stdout != 'java-8-openjdk'"
   tags:
     - java
 
