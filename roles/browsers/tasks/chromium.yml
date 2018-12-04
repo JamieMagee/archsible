@@ -18,3 +18,11 @@
   become_user: "{{ user.name }}"
   tags:
     - chromium
+
+- name: Install shutdown hook
+  aur:
+    name: chrome-shutdown-hook
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - chromium
