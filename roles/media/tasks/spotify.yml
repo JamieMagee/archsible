@@ -6,3 +6,33 @@
   become_user: "{{ user.name }}"
   tags:
     - aur
+
+- name: Allow Spotify dbus access
+  lineinfile:
+    path: /etc/firejail/spotify.local
+    line: ignore nodbus
+    create: true
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - firejail
+
+- name: Jail Spotify
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/spotify
+    state: link
+  tags:
+    - firejail
+
+- name: Copy Spotify desktop file
+  copy:
+    src: /usr/share/applications/spotify.desktop
+    dest: "/home/{{ user.name }}/.local/share/applications/spotify.desktop"
+
+- name: Jail Spotify desktop file
+  lineinfile:
+    path: "/home/{{ user.name }}/.local/share/applications/spotify.desktop"
+    regexp: "Exec=/usr/bin/spotify %U"
+    line: "Exec=spotify %U"
