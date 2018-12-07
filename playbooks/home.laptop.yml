@@ -10,6 +10,7 @@
     - { role: mkinitcpio, tags: ['mkinitcpio'] }
     - { role: systemd-boot, tags: ['systemd-boot'], when: "systemd_boot is defined" }
     - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
+    - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: ssh, tags: ['ssh'] }
@@ -42,6 +43,7 @@
     - { role: vpn, tags: ['vpn'] }
     - { role: calibre, tags: ['calibre'] }
     - { role: media, tags: ['media'] }
+    - { role: gaming, tags: ['gaming'] }
     - { role: laptop, tags: ['laptop'] }
   vars_prompt:
     - name: user_password
