@@ -2,3 +2,11 @@
 - name: Install Steam
   pacman:
     name: steam
+
+- name: Install protontricks
+  aur:
+    name: protontricks-git
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
