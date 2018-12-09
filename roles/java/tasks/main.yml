@@ -27,7 +27,7 @@
   aur:
     name: "{{ item }}"
   loop:
-    - openjdk12
+    - openjdk-devel
   become: true
   become_user: '{{ user.name }}'
   tags:
