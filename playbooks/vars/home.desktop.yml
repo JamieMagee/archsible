@@ -1,5 +1,5 @@
 ---
-hostname: Batman
+hostname: batman
 
 yadm:
   class: home

@@ -1,8 +1,5 @@
 ---
-systemd_boot:
-  root: /dev/sda3
-
-hostname: Robin
+hostname: robin
 
 yadm:
   class: home
