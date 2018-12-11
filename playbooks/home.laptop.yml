@@ -13,6 +13,7 @@
     - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }
     - { role: dotfiles, tags: ['dotfiles'] }
+    - { role: mirrorlist, tags: ['mirrorlist'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: firewall, tags: ['firewall'] }
     - { role: ssd, tags: ['ssd'] }

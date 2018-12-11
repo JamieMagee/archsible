@@ -29,13 +29,6 @@
   tags:
     - packages
 
-- name: Push pacman mirror list update hook
-  copy:
-    src: mirrorlist.hook
-    dest: /etc/pacman.d/hooks/mirrorlist.hook
-  tags:
-    - packages
-
 - name: Use all cores when compressing packages
   lineinfile:
     dest: /etc/makepkg.conf

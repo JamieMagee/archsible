@@ -1,0 +1,32 @@
+---
+- name: Install reflector
+  pacman:
+    name: reflector
+
+- name: Push reflector update script
+  copy:
+    src: reflector-update.sh
+    dest: /usr/local/bin/reflector-update
+    mode: 0755
+
+- name: Push pacman mirror list update hook
+  copy:
+    src: mirrorlist.hook
+    dest: /etc/pacman.d/hooks/mirrorlist.hook
+
+- name: Push reflector update service
+  copy:
+    src: reflector-update.service
+    dest: /etc/systemd/system/reflector-update.service
+
+- name: Push reflector update timer
+  copy:
+    src: reflector-update.timer
+    dest: /etc/systemd/system/reflector-update.timer
+
+- name: Enable and start reflector update timer
+  systemd:
+    name: reflector-update.timer
+    enabled: true
+    state: started
+    daemon_reload: true
