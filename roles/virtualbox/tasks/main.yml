@@ -4,7 +4,7 @@
     name:
       - virtualbox
       - virtualbox-guest-iso
-      - virtualbox-host-modules-arch
+      - virtualbox-host-dkms
 
 - name: Install VirtualBox extensions
   aur:

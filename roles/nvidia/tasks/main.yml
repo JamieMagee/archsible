@@ -2,7 +2,7 @@
 - name: Install NVIDIA drivers
   pacman:
     name:
-      - nvidia
+      - nvidia-dkms
       - nvidia-utils
       - lib32-nvidia-utils
 
