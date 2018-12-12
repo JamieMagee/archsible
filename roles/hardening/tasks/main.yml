@@ -1,0 +1,6 @@
+---
+- name: Install hardened kernel and headers
+  pacman:
+    name:
+      - linux-hardened
+      - linux-hardened-headers
