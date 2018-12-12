@@ -40,6 +40,7 @@
   become: true
   become_user: "{{ user.name }}"
   tags:
+    - aur
     - chromium
 
 - name: Install shutdown hook
@@ -48,4 +49,5 @@
   become: true
   become_user: "{{ user.name }}"
   tags:
+    - aur
     - chromium
