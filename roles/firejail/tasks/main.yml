@@ -1,4 +1,9 @@
 ---
 - name: Install firejail
-  pacman:
-    name: firejail
+  aur:
+    name: firejail-apparmor
+    become: true
+    become_user: "{{ user.name }}"
+  tags:
+    - apparmor
+    - firejail
