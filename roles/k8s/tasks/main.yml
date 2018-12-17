@@ -23,9 +23,9 @@
   tags:
     - aur
 
-- name: Install draft
+- name: Install skaffold
   aur:
-    name: draft-bin
+    name: skaffold
   become: true
   become_user: "{{ user.name }}"
   tags:
