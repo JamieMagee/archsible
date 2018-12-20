@@ -1,5 +1,6 @@
 [Unit]
 Description=Reflector Update Timer
+Requires=network-online.target
 
 [Timer]
 Unit=reflector-update.service
