@@ -1,0 +1,67 @@
+---
+- name: Install Unbound
+  pacman:
+    name: unbound
+
+- name: Download root hints
+  get_url:
+    url: https://www.internic.net/domain/named.cache
+    dest: /etc/unbound/root.hints
+    force: yes
+
+- name: Copy Unbound configuration file
+  template:
+    src: unbound.conf.j2
+    dest: /etc/unbound/unbound.conf
+
+- name: Create Unbound systemd unit file directory
+  file:
+    path: /etc/systemd/system/unbound.service.d
+    state: directory
+  tags:
+    - firejail
+
+- name: Push Unbound socket unit file
+  copy:
+    src: unbound-service-override.conf
+    dest: /etc/systemd/system/unbound.service.d/override.conf
+  tags:
+    - firejail
+
+- name: Remove Unbound systemd unit PID file line
+  lineinfile:
+    dest: /usr/lib/systemd/system/unbound.service
+    state: absent
+    line: 'PIDFile=/run/unbound.pid'
+  tags:
+    - firejail
+
+- name: Enable and start Unbound
+  service:
+    name: unbound.service
+    enabled: yes
+    state: restarted
+    daemon_reload: true
+
+- name: Configure resolvconf to use Unbound
+  lineinfile:
+    dest: /etc/resolvconf.conf
+    state: present
+    line: 'name_servers=127.0.0.1'
+
+- name: Push root hints update service
+  copy:
+    src: roothints.service
+    dest: /etc/systemd/system/roothints.service
+
+- name: Push root hints update timer
+  copy:
+    src: roothints.timer
+    dest: /etc/systemd/system/roothints.timer
+
+- name: Enable and start root hints update timer
+  systemd:
+    name: roothints.timer
+    enabled: true
+    state: started
+    daemon_reload: true
