@@ -14,7 +14,7 @@
   become_user: "{{ user.name }}"
   loop:
     - paper-icon-theme-git
-    - adapta-gtk-theme-git
+    - plata-theme
   tags:
     - aur
 
