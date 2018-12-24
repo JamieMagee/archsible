@@ -27,7 +27,7 @@
   aur:
     name: "{{ item }}"
   loop:
-    - openjdk-devel
+    - java-openjdk-ea-bin
   become: true
   become_user: '{{ user.name }}'
   tags:
