@@ -33,3 +33,10 @@
     name: my-SSH
   tags:
     - firewall
+
+- name: Allow SSH
+  ufw:
+    rule: allow
+    name: steam
+  tags:
+    - firewall
