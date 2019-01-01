@@ -34,7 +34,7 @@
   tags:
     - firewall
 
-- name: Allow Steam In-Home Streaming 
+- name: Allow Steam In-Home Streaming
   ufw:
     rule: allow
     name: steam

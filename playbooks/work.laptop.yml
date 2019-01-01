@@ -7,9 +7,9 @@
     - { role: antergos, tags: ['antergos'] }
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
-    - { role: hostname, tags: ['hostname'], when: "hostname is defined and hostname != ''" }
-    - { role: mkinitcpio, tags: ['mkinitcpio'], when: "mkinitcpio is defined" }
-    - { role: systemd-boot, tags: ['systemd-boot'], when: "systemd_boot is defined" }
+    - { role: hostname, tags: ['hostname'], when: 'hostname is defined' }
+    - { role: mkinitcpio, tags: ['mkinitcpio'], when: 'mkinitcpio is defined' }
+    - { role: systemd-boot, tags: ['systemd-boot'], when: 'systemd_boot is defined' }
     - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
     - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }
@@ -37,7 +37,7 @@
     - { role: gdm, tags: ['gdm'] }
     - { role: gnome, tags: ['gnome'] }
     - { role: sound, tags: ['sound'] }
-    - { role: bluetooth, tags: ['bluetooth'], when: "bluetooth is defined"}
+    - { role: bluetooth, tags: ['bluetooth'], when: 'bluetooth is defined' }
     - { role: browsers, tags: ['browsers'] }
     - { role: teams, tags: ['teams'] }
     - { role: office, tags: ['office'] }
@@ -51,4 +51,4 @@
     - { role: gaming, tags: ['gaming'] }
   vars_prompt:
     - name: user_password
-      prompt: "Enter desired user password"
+      prompt: 'Enter desired user password'

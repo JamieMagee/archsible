@@ -7,7 +7,7 @@
   get_url:
     url: https://www.internic.net/domain/named.cache
     dest: /etc/unbound/root.hints
-    force: yes
+    force: true
 
 - name: Copy Unbound configuration file
   template:
@@ -39,7 +39,7 @@
 - name: Enable and start Unbound
   service:
     name: unbound.service
-    enabled: yes
+    enabled: true
     state: restarted
     daemon_reload: true
 
