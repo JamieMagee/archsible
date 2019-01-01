@@ -17,6 +17,7 @@
     - { role: mirrorlist, tags: ['mirrorlist'] }
     - { role: ssh, tags: ['ssh'] }
     - { role: firewall, tags: ['firewall'] }
+    - { role: dns, tags: ['dns'] }
     - { role: ssd, tags: ['ssd'] }
     - { role: fonts, tags: ['fonts'] }
     - { role: nettools, tags: ['nettools'] }
