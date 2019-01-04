@@ -9,7 +9,7 @@
     update_cache: true
 
 - include: user.yml
-- include: shell.yml
 - include: sudo.yml
+- include: shell.yml
 - include: packages.yml
 - include: journal.yml
