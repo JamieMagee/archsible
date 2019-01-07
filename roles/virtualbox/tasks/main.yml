@@ -1,4 +1,8 @@
 ---
+- name: Install Linux headers
+  pacman:
+    name: linux-headers
+
 - name: Install VirtualBox and dependencies
   pacman:
     name:
