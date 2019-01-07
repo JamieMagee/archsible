@@ -1,0 +1,8 @@
+---
+- name: Install Linux headers
+  pacman:
+    name: linux-headers
+
+- name: Install broadcom-wl
+  pacman:
+    name: broadcom-wl-dkms
