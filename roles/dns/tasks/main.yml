@@ -43,11 +43,15 @@
     state: restarted
     daemon_reload: true
 
-- name: Configure resolvconf to use Unbound
-  lineinfile:
+- name: Push resolvconf.conf
+  copy:
+    src: resolvconf.conf
     dest: /etc/resolvconf.conf
-    state: present
-    line: 'name_servers=127.0.0.1'
+
+- name: Restart NetworkManager
+  systemd:
+    name: NetworkManager.service
+    state: restarted
 
 - name: Push root hints update service
   copy:

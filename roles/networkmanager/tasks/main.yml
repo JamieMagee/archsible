@@ -1,0 +1,9 @@
+---
+- name: Install NetworkManager
+  pacman:
+    name: networkmanager
+
+- name: Set resolvconf manager
+  copy:
+    src: rc-manager.conf
+    dest: /etc/NetworkManager/conf.d/rc-manager.conf

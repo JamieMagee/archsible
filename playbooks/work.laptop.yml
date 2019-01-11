@@ -13,6 +13,7 @@
     - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
     - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }
+    - { role: networkmanager, tags: ['networkmanager'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: mirrorlist, tags: ['mirrorlist'] }
     - { role: ssh, tags: ['ssh'] }

@@ -5,11 +5,16 @@ server:
   use-syslog: yes
   do-not-query-localhost: no
   access-control: 0.0.0.0/8 allow
-  tls-upstream: yes
   tls-cert-bundle: /etc/ca-certificates/extracted/tls-ca-bundle.pem
 
   # Set root DNS servers.
   root-hints: "/etc/unbound/root.hints"
+
+  private-domain: "localdomain"
+  private-domain: "corp.microsoft.com"
+
+  unblock-lan-zones: yes
+  insecure-lan-zones: yes
 
   # RFC1918 networks are private and should not be returned.
   private-address: 10.0.0.0/8
@@ -19,10 +24,14 @@ server:
   private-address: fd00::/8
   private-address: fe80::/10
 
+  # Include local network DNS.
+  include: "/etc/unbound/resolvconf.conf"
+
 {% if unbound.nameservers %}
   # Define DNS servers to forward queries to.
   forward-zone:
     name: "."
+    forward-tls-upstream: yes
     {% for nameserver in unbound.nameservers %}
     forward-addr: {{ nameserver }}
     {% endfor %}
