@@ -10,7 +10,7 @@
 
 - name: Install CUPS drivers from AUR
   aur:
-    name: "{{ item}}"
+    name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
   loop:

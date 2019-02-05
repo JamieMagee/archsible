@@ -10,7 +10,7 @@
 - name: Setup Private Internet Access credentials
   copy:
     content: |
-      {{ pia.credentials.username}}
+      {{ pia.credentials.username }}
       {{ pia.credentials.password }}
     dest: /etc/private-internet-access/login.conf
     owner: root
@@ -31,5 +31,5 @@
 
 - name: Generate VPN configuration files
   command: pia -a
-  when: "vpn_config.stat.exists == False"
+  when: not vpn_config.stat.exists
   notify: Restart NetworkManager

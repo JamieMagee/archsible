@@ -12,4 +12,4 @@ install:
 script:
   - poetry run yamllint .
   - poetry run ansible-lint roles/*
-  - cd playbooks && find -name \*yml -exec poetry run ansible-lint -v {} \;
+  - cd playbooks && find -name \*yml -exec poetry run ansible-lint {} \;

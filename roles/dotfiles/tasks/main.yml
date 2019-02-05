@@ -16,7 +16,7 @@
   command: "yadm clone {{ dotfiles }}"
   become: true
   become_user: "{{ user.name }}"
-  when: "yadm_repo.stat.exists == False"
+  when: not yadm_repo.stat.exists
 
 - name: Check yadm class
   command: "yadm config local.class"

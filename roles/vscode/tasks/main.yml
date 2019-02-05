@@ -42,7 +42,7 @@
   aur:
     name: "{{ item }}"
   become: true
-  become_user: "{{ user.name}}"
+  become_user: "{{ user.name }}"
   loop:
     - shfmt
 
