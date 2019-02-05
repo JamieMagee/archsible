@@ -4,7 +4,6 @@
     - vars/home.desktop.yml
   become: true
   roles:
-    - { role: antergos, tags: ['antergos'] }
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
     - { role: hostname, tags: ['hostname'], when: 'hostname is defined' }
