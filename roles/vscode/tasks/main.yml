@@ -7,37 +7,6 @@
   tags:
     - aur
 
-- name: Jail vscode
-  file:
-    src: /usr/bin/firejail
-    dest: /usr/local/bin/code
-    state: link
-  tags:
-    - firejail
-
-- name: Enable network in vscode
-  lineinfile:
-    path: "/etc/firejail/code.local"
-    line: "ignore net none"
-    create: true
-  tags:
-    - firejail
-
-- name: Copy vscode desktop file
-  copy:
-    src: /usr/share/applications/visual-studio-code.desktop
-    dest: "/home/{{ user.name }}/.local/share/applications/visual-studio-code.desktop"
-  tags:
-    - firejail
-
-- name: Jail vscode desktop file
-  lineinfile:
-    path: "/home/{{ user.name }}/.local/share/applications/visual-studio-code.desktop"
-    regexp: "Exec=/opt/visual-studio-code/code %f"
-    line: "Exec=code %f"
-  tags:
-    - firejail
-
 - name: Install extension dependencies
   aur:
     name: "{{ item }}"
