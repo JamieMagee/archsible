@@ -45,16 +45,6 @@
     - aur
     - packages
 
-- name: Install cower
-  aur:
-    name: cower
-    skip_pgp_check: true
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
-    - packages
-
 - name: Install AUR base packages
   aur:
     name: "{{ item }}"
