@@ -77,7 +77,7 @@ mount -t btrfs -o $BTRFSOPTS,subvol=home LABEL=system $MOUNT/home
 mount -o $MOUNTOPTS LABEL=EFI $MOUNT/boot
 
 # make and activate swap
-mkswap -L swap /dev/disk/by-partlabel//swap
+mkswap -L swap /dev/disk/by-partlabel/swap
 swapon -L swap
 
 #----------------------------------------------------------------------
@@ -101,9 +101,6 @@ set -eu
 HOST=$HOST
 USER=$USER
 USERSHELL=$USERSHELL
-# get partition UUIDs (have to do this before entering chroot since lsblk won't report there)
-SWAP_UUID=$(lsblk --nodeps --noheadings -oUUID /dev/disk/by-partlabel/swap)
-YSTEM_UUID=$(lsblk --nodeps --noheadings -oUUID /dev/disk/by-partlabel/system)
 
 EOFSETUP
 
