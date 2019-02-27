@@ -4,11 +4,10 @@
 # Arch Linux Installation Script
 #
 # This installs, with no intervention, Arch Linux
-# on an encrypted btrfs partition
+# on an unencrypted btrfs partition
 #----------------------------------------------------------------------
 
-set -euo pipefail
-IFS=$'\n\t'
+set -eu
 
 #----------------------------------------------------------------------
 # DRIVE & SCRIPT VALUES
@@ -31,7 +30,6 @@ BTRFSOPTS=$MOUNTOPTS,ssd,noatime,nodiratime,discard,compress-force=zstd
 [ -n "${SWAP:=$(swapon --noheadings --show=NAME)}" ] && swapoff $SWAP
 umount /mnt/boot || :
 umount -R /mnt || :
-for MAPPED in $(ls /dev/mapper); do [ "$MAPPED" != "control" ] && cryptsetup close /dev/mapper/$MAPPED || : ; done
 
 #----------------------------------------------------------------------
 # optional: secure wipe of drive (takes a while)
@@ -53,30 +51,9 @@ sgdisk --zap-all $DRIVE
 
 sgdisk --clear \
   --new=1:0:+512MiB --typecode=1:ef00 --change-name=1:EFI \
-  --new=2:0:+8GiB --typecode=2:8200 --change-name=2:cryptswap \
-  --new=3:0:0 --typecode=3:8300 --change-name=3:cryptsystem \
+  --new=2:0:+8GiB --typecode=2:8200 --change-name=2:swap \
+  --new=3:0:0 --typecode=3:8300 --change-name=3:system \
   $DRIVE
-#----------------------------------------------------------------------
-#
-#----------------------------------------------------------------------
-
-# get passphrase
-while ! ${MATCH:-false}; do
-  echo -en "Enter Passphrase   : "
-  read -rs PASS
-  echo -en "\nConfirm Passphrase : "
-  read -rs CONF
-  [ "$PASS" = "$CONF" ] &&
-    {
-      MATCH=true
-      echo -e "\n\nPassphrases matched.\n"
-    } ||
-    echo -e "\n\nPassphrases didn't match--try again.\n"
-done
-
-# encrypt cryptsystem partition with passphrase
-echo $PASS | cryptsetup luksFormat --align-payload=8192 -s 256 -c aes-xts-plain64 /dev/disk/by-partlabel/cryptsystem
-echo $PASS | cryptsetup open /dev/disk/by-partlabel/cryptsystem system
 
 #----------------------------------------------------------------------
 # Format & Mount Partitions
@@ -84,7 +61,7 @@ echo $PASS | cryptsetup open /dev/disk/by-partlabel/cryptsystem system
 
 mkfs.fat -F32 -n EFI /dev/disk/by-partlabel/EFI
 
-mkfs.btrfs --force --label system /dev/mapper/system
+mkfs.btrfs --force --label system /dev/disk/by-partlabel/system
 
 # mount btrfs top-level subvolume for further subvolume creation
 mount -t btrfs -o $BTRFSOPTS LABEL=system $MOUNT
@@ -100,8 +77,7 @@ mount -t btrfs -o $BTRFSOPTS,subvol=home LABEL=system $MOUNT/home
 mount -o $MOUNTOPTS LABEL=EFI $MOUNT/boot
 
 # make and activate swap
-cryptsetup open --type plain --key-file /dev/urandom /dev/disk/by-partlabel/cryptswap swap
-mkswap -L swap /dev/mapper/swap
+mkswap -L swap /dev/disk/by-partlabel//swap
 swapon -L swap
 
 #----------------------------------------------------------------------
@@ -113,19 +89,6 @@ pacstrap $MOUNT base base-devel btrfs-progs terminus-font efibootmgr intel-ucode
 
 # generate fstab
 genfstab -L -p $MOUNT >>$MOUNT/etc/fstab
-
-# remove the subvolume ID element of the fstab statements to
-# allow mounting by subvolume name only (to facilitate rollbacks)
-sed -i 's/,subvolid=[[:digit:]]*//g' $MOUNT/etc/fstab
-
-# enter swap into crypttab
-echo 'swap    /dev/disk/by-partlabel/cryptswap    /dev/urandom    swap,cipher=aes-xts-plain64,size=256' >>$MOUNT/etc/crypttab
-
-# make sure we have a crypttab.initramfs as well
-echo 'swap    /dev/disk/by-partlabel/cryptswap    /dev/urandom    swap,cipher=aes-xts-plain64,size=256' >$MOUNT/etc/crypttab.initramfs
-
-# remove LABEL identifier for swap in fstab as it may/will not have a label from crypttab
-sed -i 's+LABEL=swap+/dev/mapper/swap+' $MOUNT/etc/fstab
 
 #----------------------------------------------------------------------
 # Prepare chroot script
@@ -139,8 +102,8 @@ HOST=$HOST
 USER=$USER
 USERSHELL=$USERSHELL
 # get partition UUIDs (have to do this before entering chroot since lsblk won't report there)
-CRYPTSWAP_UUID=$(lsblk --nodeps --noheadings -oUUID /dev/disk/by-partlabel/cryptswap)
-CRYPTSYSTEM_UUID=$(lsblk --nodeps --noheadings -oUUID /dev/disk/by-partlabel/cryptsystem)
+SWAP_UUID=$(lsblk --nodeps --noheadings -oUUID /dev/disk/by-partlabel/swap)
+YSTEM_UUID=$(lsblk --nodeps --noheadings -oUUID /dev/disk/by-partlabel/system)
 
 EOFSETUP
 
@@ -196,7 +159,7 @@ cat > /etc/mkinitcpio.conf << EOF
 #MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 BINARIES="/usr/bin/btrfs"
 FILES=""
-HOOKS="base systemd sd-vconsole modconf keyboard block filesystems btrfs sd-encrypt fsck"
+HOOKS="base systemd sd-vconsole modconf keyboard block filesystems btrfs fsck"
 EOF
 mkinitcpio -p linux
 # remove exiting boot entry
@@ -219,7 +182,6 @@ linux      /vmlinuz-linux
 initrd     /intel-ucode.img
 initrd     /initramfs-linux.img
 options    \
-rd.luks.name=$CRYPTSYSTEM_UUID=system1 \
 root=LABEL=system rootflags=subvol=/root rw x-systemd.device-timeout=0 \
 apparmor=1,security=apparmor \
 quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3
@@ -230,7 +192,6 @@ linux      /vmlinuz-linux
 initrd     /intel-ucode.img
 initrd     /initramfs-linux-fallback.img
 options    \
-rd.luks.name=$CRYPTSYSTEM_UUID=system1 \
 root=LABEL=system rootflags=subvol=/root rw x-systemd.device-timeout=0 \
 apparmor=1,security=apparmor \
 quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3
