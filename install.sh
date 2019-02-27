@@ -86,7 +86,7 @@ done
 #----------------------------------------------------------------------
 
 mkfs.fat -F32 -n EFI /dev/disk/by-partlabel/EFI
-x
+
 mkfs.btrfs --force --label system /dev/mapper/system
 
 # mount btrfs top-level subvolume for further subvolume creation
@@ -137,9 +137,9 @@ sed -i 's+LABEL=swap+/dev/mapper/swap+' $MOUNT/etc/fstab
 #----------------------------------------------------------------------
 
 cat >$MOUNT/setup.sh <<EOFSETUP
-#!/bin/sh
+#!/usr/bin/env bash
 set -eu
-IFS=$'\n\t'
+
 HOST=$HOST
 USER=$USER
 USERSHELL=$USERSHELL
