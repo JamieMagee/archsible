@@ -4,5 +4,12 @@
     src: timesyncd.conf
     dest: /etc/systemd/timesyncd.conf
 
+- name: Get NTP service state
+  command: timedatectl status
+  changed_when: false
+  check_mode: false
+  register: ntp_status
+
 - name: Enable systemd-timesyncd
   command: timedatectl set-ntp true
+  when: "'inactive' in ntp_status.stdout"

@@ -16,3 +16,5 @@
   become_user: "{{ user.name }}"
   loop: "{{ fisher.packages }}"
   command: /usr/bin/fish -c 'fisher add "{{ item }}"'
+  register: fisher_packages
+  changed_when: "'added 1 package' in fisher_packages.stdout"
