@@ -55,6 +55,8 @@ sgdisk --clear \
   --new=3:0:0 --typecode=3:8300 --change-name=3:system \
   $DRIVE
 
+sleep 1 # udev race condition
+
 #----------------------------------------------------------------------
 # Format & Mount Partitions
 #----------------------------------------------------------------------
