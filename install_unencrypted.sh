@@ -18,7 +18,6 @@ DRIVE=/dev/sda
 # script values
 HOST=deadbeef # this will get changed later by ansible anyway
 USER=jamie
-USERSHELL=bash
 MOUNT=/mnt
 MOUNTOPTS=defaults,x-mount.mkdir
 BTRFSOPTS=$MOUNTOPTS,ssd,noatime,nodiratime,discard,compress-force=zstd
@@ -102,7 +101,6 @@ set -eu
 
 HOST=$HOST
 USER=$USER
-USERSHELL=$USERSHELL
 
 EOFSETUP
 
@@ -132,7 +130,7 @@ cat > /etc/hosts <<EOF
 # End of file
 EOF
 # add user, set passwords
-useradd -m -G wheel -s $(which $USERSHELL) $USER
+useradd -m -G wheel $USER
 while ! ${MATCH:-false}
 do
 	echo -en "Enter Initial Root/User Passphrase   : "
