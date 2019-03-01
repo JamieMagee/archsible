@@ -24,7 +24,7 @@ PyYAML = "^3.13"
 six = "^1.12"
 
 [tool.poetry.dev-dependencies]
-yamllint = "^1.14"
+yamllint = "^1.15"
 ansible-lint = "^4.1"
 
 [build-system]
