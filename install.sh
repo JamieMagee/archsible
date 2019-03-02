@@ -247,3 +247,32 @@ EOFSETUP
 chmod +x $MOUNT/setup.sh
 
 arch-chroot $MOUNT sh -c '/setup.sh'
+
+#----------------------------------------------------------------------
+# Post reboot installation
+#----------------------------------------------------------------------
+
+cat > $MOUNT/install.sh <<EOFINSTALL
+#!/bin/sh
+set -eu
+
+sudo rm /setup.sh
+
+mkdir -p ~/.config/lpass
+mkdir -p ~/.local/share/lpass
+
+sudo pacman -S lastpass-cli ansible
+
+lpass login jamie.magee@gmail.com
+
+mkdir code
+cd code
+git clone https://github.com/JamieMagee/archsible.git
+cd archsible
+
+lpass show Secure\ Notes Ansible --notes > vault-pass.txt
+ansible-galaxy install -r requirements.yml -p galaxy
+
+echo "run sudo ansible-playbook playbooks/<playbook>.yml"
+
+EOFINSTALL
