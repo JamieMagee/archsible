@@ -7,9 +7,6 @@
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
     - { role: hostname, tags: ['hostname'], when: 'hostname is defined' }
-    - { role: mkinitcpio, tags: ['mkinitcpio'], when: 'mkinitcpio is defined' }
-    - { role: systemd-boot, tags: ['systemd-boot'], when: 'systemd_boot is defined' }
-    - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
     - { role: hardening, tags: ['hardening'] }
     - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }

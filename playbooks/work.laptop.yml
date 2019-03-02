@@ -7,12 +7,9 @@
     - { role: timezone, tags: ['timezone'] }
     - { role: locale, tags: ['locale'] }
     - { role: hostname, tags: ['hostname'], when: 'hostname is defined' }
-    - { role: mkinitcpio, tags: ['mkinitcpio'], when: 'mkinitcpio is defined' }
-    - { role: systemd-boot, tags: ['systemd-boot'], when: 'systemd_boot is defined' }
-    - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
     - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }
-    - { role: networkmanager, tags: ['networkmanager'] }
+    - { role: networkmanapger, tags: ['networkmanager'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: mirrorlist, tags: ['mirrorlist'] }
     - { role: ssh, tags: ['ssh'] }

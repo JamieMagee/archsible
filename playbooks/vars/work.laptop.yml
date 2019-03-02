@@ -3,6 +3,3 @@ hostname: jamagee-laptop
 
 yadm:
   class: work
-
-mkinitcpio:
-  modules: base consolefont udev autodetect keyboard keymap modconf block encrypt lvm2 filesystems fsck
