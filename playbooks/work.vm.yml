@@ -31,6 +31,3 @@
     - { role: vscode, tags: ['vscode'] }
     - { role: intellij, tags: ['intellij'] }
     - { role: work, tags: ['work'] }
-  vars_prompt:
-    - name: user_password
-      prompt: 'Enter desired user password'

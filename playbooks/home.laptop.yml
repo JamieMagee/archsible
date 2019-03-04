@@ -47,6 +47,3 @@
     - { role: media, tags: ['media'] }
     - { role: gaming, tags: ['gaming'] }
     - { role: laptop, tags: ['laptop'] }
-  vars_prompt:
-    - name: user_password
-      prompt: 'Enter desired user password'

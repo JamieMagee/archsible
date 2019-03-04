@@ -10,7 +10,6 @@ Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [
 ## Requirements
 
 * [`ansible`](https://www.archlinux.org/packages/community/any/ansible/)
-* [`python-passlib`](https://www.archlinux.org/packages/community/any/python-passlib/)
 
 ## Installation
 

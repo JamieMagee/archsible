@@ -9,8 +9,6 @@
   user:
     name: "{{ user.name }}"
     group: "{{ user.group }}"
-    password: "{{ user_password|password_hash('sha512') }}"
-    update_password: on_create
     uid: "{{ user.uid }}"
     append: true
   tags:
