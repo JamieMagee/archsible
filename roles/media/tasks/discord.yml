@@ -1,0 +1,42 @@
+---
+- name: Install Discord
+  aur:
+    name: discord
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Override Discord profile
+  lineinfile:
+    path: /etc/firejail/discord.local
+    line: "{{ item }}"
+    create: true
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - ignore nodbus
+    - ignore noexec
+  tags:
+    - firejail
+
+#https://github.com/netblue30/firejail/issues/2518
+# - name: Jail Discord
+#   file:
+#     src: /usr/bin/firejail
+#     dest: /usr/local/bin/discord
+#     state: link
+#   tags:
+#     - firejail
+
+- name: Copy Discord desktop file
+  copy:
+    src: /usr/share/applications/discord.desktop
+    dest: "/home/{{ user.name }}/.local/share/applications/discord.desktop"
+
+- name: Jail Discord desktop file
+  lineinfile:
+    path: "/home/{{ user.name }}/.local/share/applications/discord.desktop"
+    regexp: "Exec=/opt/discord/Discord"
+    line: "Exec=discord"

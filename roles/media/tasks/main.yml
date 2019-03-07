@@ -1,5 +1,6 @@
 ---
 - include: spotify.yml
+- include: discord.yml
 - include: vlc.yml
 - include: gimp.yml
 - include: kdenlive.yml
