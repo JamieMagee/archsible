@@ -36,13 +36,6 @@
   tags:
     - firejail
 
-- name: Enable and start Unbound
-  service:
-    name: unbound.service
-    enabled: true
-    state: restarted
-    daemon_reload: true
-
 - name: Push resolvconf.conf
   copy:
     src: resolvconf.conf
@@ -68,4 +61,11 @@
     name: roothints.timer
     enabled: true
     state: started
+    daemon_reload: true
+
+- name: Enable and start Unbound
+  service:
+    name: unbound.service
+    enabled: true
+    state: restarted
     daemon_reload: true
