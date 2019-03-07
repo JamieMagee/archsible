@@ -16,7 +16,6 @@
     owner: gdm
     group: gdm
     mode: 0755
-    recurse: true
 
 - name: Disable GDM pulseaudio instance
   file:
