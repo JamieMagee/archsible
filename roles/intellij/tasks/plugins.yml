@@ -5,6 +5,7 @@
   vars:
     intellij_plugins_intellij_home: "/opt/intellij-idea-ultimate-edition"
     intellij_plugins_intellij_user_dirname: ".IntelliJIdea2018.3"
+    intellij_plugins_python_major_version: 2
     users:
       - username: "{{ user.name }}"
         intellij_plugins:
