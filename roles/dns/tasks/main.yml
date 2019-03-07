@@ -69,3 +69,7 @@
     enabled: true
     state: restarted
     daemon_reload: true
+
+- name: Pause while unbound starts up
+  pause:
+    seconds: 10
