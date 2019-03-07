@@ -1,7 +1,7 @@
 ---
-- name: Install NetworkManager PPTP plugin
+- name: Install NetworkManager OpenConnect plugin
   pacman:
-    name: networkmanager-pptp
+    name: networkmanager-openconnect
 
 - name: Clone VPN setup git repo
   become: true
