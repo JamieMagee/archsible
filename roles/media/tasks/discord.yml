@@ -21,7 +21,7 @@
   tags:
     - firejail
 
-#https://github.com/netblue30/firejail/issues/2518
+# https://github.com/netblue30/firejail/issues/2518
 # - name: Jail Discord
 #   file:
 #     src: /usr/bin/firejail
