@@ -3,7 +3,7 @@
   pacman:
     name:
       - bumblebee
-      - bbswitch
+      - bbswitch-dkms
       - mesa
       - primus
 
