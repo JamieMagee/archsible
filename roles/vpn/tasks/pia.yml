@@ -1,35 +1,34 @@
 ---
-- name: Install Private Internet Access configuration files
-  aur:
-    name: private-internet-access-vpn
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
+- name: Install networkmanager-openvpn
+  pacman:
+    name: networkmanager-openvpn
 
-- name: Setup Private Internet Access credentials
-  copy:
-    content: |
-      {{ pia.credentials.username }}
-      {{ pia.credentials.password }}
-    dest: /etc/private-internet-access/login.conf
+- name: Get PIA CA certificate
+  get_url:
+    url: "https://www.privateinternetaccess.com/openvpn/ca.rsa.4096.crt"
+    dest: "/etc/openvpn/pia-ca.rsa.4096.crt"
+
+- name: Fetch PIA servers
+  uri:
+    url: "https://www.privateinternetaccess.com/vpninfo/servers"
+    body_format: json
+    return_content: true
+    headers:
+      Content-Type: "application/json"
+  register: pia_servers
+
+- name: Filter servers
+  set_fact:
+    pia_servers: "{{ pia_servers.content.split('\n')[0] | from_json | json_query('*.[dns, name]')  }}"
+
+- name: Create NetworkManager connections
+  template:
+    src: pia.nmconnection.j2
+    dest: "/etc/NetworkManager/system-connections/PIA - {{ pia_server[1] }}.nmconnection"
     owner: root
     group: root
     mode: 0600
-
-- name: Set Private Internet Access configuration
-  template:
-    src: pia.conf.j2
-    dest: /etc/private-internet-access/pia.conf
-    owner: "{{ user.name }}"
-    group: "{{ user.name }}"
-
-- name: Check if VPN configuration exists
-  stat:
-    path: "/etc/NetworkManager/system-configuration/{{ pia.locations | first }}"
-  register: vpn_config
-
-- name: Generate VPN configuration files
-  command: pia -a
-  when: not vpn_config.stat.exists
+  vars:
+    pia_server: "{{ item }}"
+  loop: "{{ pia_servers }}"
   notify: Restart NetworkManager

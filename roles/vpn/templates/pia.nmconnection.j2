@@ -1,0 +1,25 @@
+[connection]
+id={{ pia_server[1] }}
+uuid={{ lookup('password', '/dev/null length=15 chars=ascii_letters') | to_uuid }}
+type=vpn
+autoconnect=false
+permissions=user:{{ user.name }}:;
+
+[vpn]
+service-type=org.freedesktop.NetworkManager.openvpn
+username={{ pia.username }}
+comp-lzo=no
+remote={{ pia_server[0] }}
+cipher=AES-256-CBC
+auth=SHA256
+connection-type=password
+password-flags=0
+port=1197
+proto-tcp=no
+ca=/etc/openvpn/pia-ca.rsa.4096.crt
+
+[vpn-secrets]
+password={{ pia.password }}
+
+[ipv4]
+method=auto
