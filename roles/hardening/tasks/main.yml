@@ -19,6 +19,13 @@
     regexp: '^initrd\s/initramfs-linux.img$'
     replace: 'initrd /initramfs-linux-hardened.img'
 
+- name: Remove standard kernel and headers
+  pacman:
+    name:
+      - linux
+      - linux-headers
+    state: absent
+
 - name: Install apparmor
   pacman:
     name: apparmor
