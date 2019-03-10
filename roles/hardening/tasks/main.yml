@@ -26,6 +26,12 @@
       - linux-headers
     state: absent
 
-- name: Install apparmor
+- name: Install apparmor userspace tools
   pacman:
     name: apparmor
+
+- name: Enable apparmor.service
+  systemd:
+    name: apparmor.service
+    enabled: true
+    state: started
