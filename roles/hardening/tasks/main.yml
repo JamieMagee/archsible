@@ -10,13 +10,13 @@
 - name: Select hardened kernel
   replace:
     path: /boot/loader/entries/arch.conf
-    regexp: '^linux /vmlinuz-linux$'
+    regexp: '^linux\s/vmlinuz-linux$'
     replace: 'linux /vmlinuz-linux-hardened'
 
 - name: Select hardened kernel
   replace:
     path: /boot/loader/entries/arch.conf
-    regexp: '^initrd /initramfs-linux.img$'
+    regexp: '^initrd\s/initramfs-linux.img$'
     replace: 'initrd /initramfs-linux-hardened.img'
 
 - name: Install apparmor
