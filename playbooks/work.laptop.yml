@@ -9,7 +9,7 @@
     - { role: hostname, tags: ['hostname'], when: 'hostname is defined' }
     - { role: bumblebee, tags: ['bumblebee'] }
     - { role: base, tags: ['base'] }
-    - { role: networkmanapger, tags: ['networkmanager'] }
+    - { role: networkmanager, tags: ['networkmanager'] }
     - { role: dotfiles, tags: ['dotfiles'] }
     - { role: mirrorlist, tags: ['mirrorlist'] }
     - { role: ssh, tags: ['ssh'] }
