@@ -1,2 +1,3 @@
 ---
 - include: chromium.yml
+- include: captive-browser.yml

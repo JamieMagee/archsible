@@ -1,0 +1,15 @@
+---
+- name: Install captive-browser
+  aur:
+    name: captive-browser-git
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install captive-browser config
+  copy:
+    src: captive-browser.toml
+    dest: "/home/{{ user.name }}/.config/captive-browser.toml"
+    owner: "{{ user.name }}"
+    group: "{{ user.group }}"
