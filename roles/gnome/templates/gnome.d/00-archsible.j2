@@ -38,6 +38,12 @@ tap-to-click={{ gnome.touchpad.tap_to_click | ternary('true', 'false') }}
 natural-scroll={{ gnome.touchpad.natural_scrolling | ternary('true', 'false') }}
 disable-while-typing={{ gnome.touchpad.disabled_while_typing | ternary('true', 'false') }}
 
+[org/gnome/desktop/wm/keybindings]
+switch-applications=@as []
+switch-applications-backward=@as []
+switch-windows=['<Alt>Tab']
+switch-windows-backward=['<Shift><Alt>Tab']
+
 [org/gnome/desktop/wm/preferences]
 focus-mode='sloppy'
 
