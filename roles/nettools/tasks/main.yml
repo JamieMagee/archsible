@@ -56,12 +56,8 @@
     - user
 
 - name: Install postman
-  aur:
-    name: postman-bin
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
+  pacman:
+    name: httpie
 
 - name: Install socat
   pacman:
