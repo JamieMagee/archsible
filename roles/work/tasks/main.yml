@@ -1,6 +1,5 @@
 ---
 - include: git.yml
-- include: wifi.yml
 - include: vpn.yml
 
 - name: Install KeepassXC
