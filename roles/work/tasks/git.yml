@@ -3,7 +3,7 @@
   become: true
   become_user: "{{ user.name }}"
   git:
-    repo: "{{ work.git.host }}/{{ item }}"
+    repo: "az:{{ item }}"
     dest: "/home/{{ user.name }}/work/{{ item }}"
     accept_hostkey: true
     version: "master"
