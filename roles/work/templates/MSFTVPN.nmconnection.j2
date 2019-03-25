@@ -1,0 +1,32 @@
+[connection]
+id=MSFTVPN
+uuid=da49faef-922d-4ea8-a2f5-d3a365830fc8
+type=vpn
+autoconnect=false
+permissions=user:{{ user.name }}:;
+
+[vpn]
+authtype=password
+autoconnect-flags=0
+certsigs-flags=0
+cookie-flags=2
+enable_csd_trojan=no
+gateway={{ work.vpn.gateway }}
+gateway-flags=2
+gwcert-flags=2
+lasthost-flags=0
+pem_passphrase_fsid=no
+prevent_invalid_cert=no
+protocol=gp
+stoken_source=disabled
+xmlconfig-flags=0
+service-type=org.freedesktop.NetworkManager.openconnect
+
+[ipv4]
+dns-search=corp.microsoft.com;
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+dns-search=corp.microsoft.com;
+method=auto

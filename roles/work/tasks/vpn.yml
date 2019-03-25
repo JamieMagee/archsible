@@ -11,3 +11,18 @@
     dest: "/home/{{ user.name }}/work/vpn"
     accept_hostkey: true
     version: "master"
+
+- name: Copy MSFTVPN configuration
+  template:
+    src: MSFTVPN.nmconnection.j2
+    dest: /etc/NetworkManager/system-connections/MSFTVPN.nmconnection
+    owner: root
+    group: root
+    mode: 0600
+  notify: Restart NetworkManager
+
+- name: Use msftvpn for auth
+  lineinfile:
+    path: /usr/lib/NetworkManager/VPN/nm-openconnect-service.name
+    regexp: "^auth-dialog="
+    line: "auth-dialog=/usr/bin/msftvpn"
