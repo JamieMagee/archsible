@@ -229,7 +229,7 @@ initrd     /initramfs-linux-fallback.img
 options    \
 rd.luks.name=$CRYPTSYSTEM_UUID=system1 \
 root=LABEL=system rootflags=subvol=/root rw x-systemd.device-timeout=0 \
-apparmor=1,security=apparmor \
+apparmor=1 security=apparmor \
 quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3
 EOF
 echo "use efibootmgr to ensure correct entry for systemd-boot is present, active, and in bootorder"

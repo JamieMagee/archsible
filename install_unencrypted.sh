@@ -180,7 +180,7 @@ initrd     /intel-ucode.img
 initrd     /initramfs-linux.img
 options    \
 root=LABEL=system rootflags=subvol=/root rw x-systemd.device-timeout=0 \
-apparmor=1,security=apparmor \
+apparmor=1 security=apparmor \
 quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3
 EOF
 cat > /boot/loader/entries/arch_fallback.conf <<EOF
