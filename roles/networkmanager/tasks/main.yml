@@ -5,5 +5,5 @@
 
 - name: Set resolvconf manager
   copy:
-    src: rc-manager.conf
-    dest: /etc/NetworkManager/conf.d/rc-manager.conf
+    src: dns.conf
+    dest: /etc/NetworkManager/conf.d/dns.conf

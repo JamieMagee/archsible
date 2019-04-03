@@ -1,75 +1,43 @@
 ---
-- name: Install Unbound
+- name: Install stubby
   pacman:
-    name: unbound
+    name: stubby
 
-- name: Download root hints
-  get_url:
-    url: https://www.internic.net/domain/named.cache
-    dest: /etc/unbound/root.hints
-    force: true
+- name: Install stubby config
+  copy:
+    src: stubby.yml
+    dest: /etc/stubby/stubby.yml
 
-- name: Copy Unbound configuration file
-  template:
-    src: unbound.conf.j2
-    dest: /etc/unbound/unbound.conf
+- name: Start and enable stubby service
+  systemd:
+    name: stubby.service
+    enabled: true
+    state: started
+    daemon_reload: true
 
-- name: Create Unbound systemd unit file directory
+- name: Install dnsmasq
+  pacman:
+    name: dnsmasq
+
+- name: test
   file:
-    path: /etc/systemd/system/unbound.service.d
+    path: /etc/NetworkManager/dnsmasq.d
     state: directory
-  tags:
-    - firejail
 
-- name: Push Unbound socket unit file
+- name: Install dnsmasq config
   copy:
-    src: unbound-service-override.conf
-    dest: /etc/systemd/system/unbound.service.d/override.conf
+    src: dnsmasq.conf
+    dest: /etc/NetworkManager/dnsmasq.d/dnsmasq.conf
+
+- name: Jail dnsmasq
+  file:
+    src: /usr/bin/firejail
+    dest: /usr/local/bin/dnsmasq
+    state: link
   tags:
     - firejail
-
-- name: Remove Unbound systemd unit PID file line
-  lineinfile:
-    dest: /usr/lib/systemd/system/unbound.service
-    state: absent
-    line: 'PIDFile=/run/unbound.pid'
-  tags:
-    - firejail
-
-- name: Push resolvconf.conf
-  copy:
-    src: resolvconf.conf
-    dest: /etc/resolvconf.conf
 
 - name: Restart NetworkManager
   systemd:
     name: NetworkManager.service
     state: restarted
-
-- name: Push root hints update service
-  copy:
-    src: roothints.service
-    dest: /etc/systemd/system/roothints.service
-
-- name: Push root hints update timer
-  copy:
-    src: roothints.timer
-    dest: /etc/systemd/system/roothints.timer
-
-- name: Enable and start root hints update timer
-  systemd:
-    name: roothints.timer
-    enabled: true
-    state: started
-    daemon_reload: true
-
-- name: Enable and start Unbound
-  service:
-    name: unbound.service
-    enabled: true
-    state: restarted
-    daemon_reload: true
-
-- name: Pause while unbound starts up
-  pause:
-    seconds: 10
