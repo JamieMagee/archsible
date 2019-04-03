@@ -11,6 +11,11 @@
   tags:
     - user
 
+- name: Override docker default subnet
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+
 - name: Enable and start docker service
   systemd:
     name: docker.service
