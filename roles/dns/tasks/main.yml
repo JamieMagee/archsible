@@ -34,10 +34,6 @@
     src: /usr/bin/firejail
     dest: /usr/local/bin/dnsmasq
     state: link
+  notify: Restart NetworkManager
   tags:
     - firejail
-
-- name: Restart NetworkManager
-  systemd:
-    name: NetworkManager.service
-    state: restarted
