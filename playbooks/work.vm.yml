@@ -27,6 +27,7 @@
     - { role: k8s, tags: ['k8s'] }
     - { role: node, tags: ['node'] }
     - { role: java, tags: ['java'] }
+    - { role: dotnet, tags: ['dotnet'] }
     - { role: urlwatch, tags: ['urlwatch'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: intellij, tags: ['intellij'] }

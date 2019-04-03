@@ -1,0 +1,20 @@
+---
+- name: Install .NET Core SDk
+  pacman:
+    name: dotnet-sdk
+
+- name: Install MSBuild
+  aur:
+    name: msbuild-stable
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install Jetbrains Rider
+  aur:
+    name: rider-eap
+  become: true
+  become_user: "{{ user.name }}"
+  tags:
+    - aur
