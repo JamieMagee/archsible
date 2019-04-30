@@ -68,16 +68,3 @@
   tags:
     - aur
     - java
-
-- name: Install GraalVM
-  aur:
-    name: "{{ item }}"
-  become: true
-  become_user: "{{ user.name }}"
-  loop:
-    - graal-bin
-    - graalpython-bin
-    - truffleruby-bin
-    - fastr-bin
-  tags:
-    - aur
