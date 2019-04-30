@@ -23,7 +23,7 @@
     - java
 
 # Next release
-- name: Install OpenJDK 12
+- name: Install OpenJDK 13
   aur:
     name: "{{ item }}"
   loop:
