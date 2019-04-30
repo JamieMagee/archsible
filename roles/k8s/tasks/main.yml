@@ -7,9 +7,9 @@
   tags:
     - aur
 
-- name: Install minikube
+- name: Install k3s
   aur:
-    name: minikube-bin
+    name: k3s-bin
   become: true
   become_user: "{{ user.name }}"
   tags:
