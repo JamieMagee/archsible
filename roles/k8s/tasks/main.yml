@@ -1,31 +1,21 @@
 ---
-- name: Install kubectl
+- name: Install k8s CLI tools
   aur:
-    name: kubectl-bin
+    name: "{{ item }}"
   become: true
   become_user: "{{ user.name }}"
+  loop:
+    - kubectl-bin
+    - kubernetes-helm
+    - skaffold
+    - k9s-bin
+    - kubectx
   tags:
     - aur
 
 - name: Install k3s
   aur:
     name: k3s-bin
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
-
-- name: Install helm
-  aur:
-    name: kubernetes-helm
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
-
-- name: Install skaffold
-  aur:
-    name: skaffold
   become: true
   become_user: "{{ user.name }}"
   tags:
