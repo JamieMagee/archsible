@@ -42,12 +42,3 @@
   tags:
     - aur
     - chromium
-
-- name: Install shutdown hook
-  aur:
-    name: chrome-shutdown-hook
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
-    - chromium
