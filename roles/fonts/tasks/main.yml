@@ -44,6 +44,7 @@
       - ttf-dejavu
       - ttf-droid
       - ttf-inconsolata
+      - ttf-joypixels
       - ttf-liberation
       - ttf-roboto
       - ttf-ubuntu-font-family
@@ -59,7 +60,6 @@
     - ttf-caladea
     - ttf-carlito
     - ttf-courier-prime
-    - ttf-emojione
     # - ttf-heuristica
     - ttf-impallari-cantora
     - ttf-merriweather
@@ -72,9 +72,9 @@
   tags:
     - aur
 
-- name: Enable EmojiOne fonts
+- name: Enable JoyPixels font
   file:
-    src: "../conf.avail/75-emojione.conf"
-    dest: /etc/fonts/conf.d/75-emojione.conf
+    src: "../conf.avail/75-joypixels.conf"
+    dest: /etc/fonts/conf.d/75-joypixels.conf
     state: link
     force: true
