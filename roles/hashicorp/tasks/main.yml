@@ -18,6 +18,7 @@
 - name: Install nomad
   aur:
     name: nomad
-    user: "{{ user.name }}"
+  become: true
+  become_user: "{{ user.name }}"
   tags:
     - aur
