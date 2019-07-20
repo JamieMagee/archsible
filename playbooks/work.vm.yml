@@ -29,6 +29,7 @@
     - { role: node, tags: ['node'] }
     - { role: java, tags: ['java'] }
     - { role: dotnet, tags: ['dotnet'] }
+    - { role: hashicorp, tags: ['hashicorp']}
     - { role: urlwatch, tags: ['urlwatch'] }
     - { role: vscode, tags: ['vscode'] }
     - { role: intellij, tags: ['intellij'] }
