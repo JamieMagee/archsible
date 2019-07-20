@@ -23,6 +23,7 @@
     - { role: archive, tags: ['archive'] }
     - { role: spell, tags: ['spell'] }
     - { role: docker, tags: ['docker'] }
+    - { role: aws, tags: ['aws'] }
     - { role: azure, tags: ['azure'] }
     - { role: k8s, tags: ['k8s'] }
     - { role: node, tags: ['node'] }
