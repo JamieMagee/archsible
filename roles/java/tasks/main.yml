@@ -10,9 +10,19 @@
   tags:
     - java
 
-# Current release
 # LTS release
 - name: Install OpenJDK 11
+  pacman:
+    name: "{{ item }}"
+  loop:
+    - jdk11-openjdk
+    - openjdk11-doc
+    - openjdk11-src
+  tags:
+    - java
+
+# Current release
+- name: Install OpenJDK 12
   pacman:
     name: "{{ item }}"
   loop:
@@ -20,18 +30,6 @@
     - openjdk-doc
     - openjdk-src
   tags:
-    - java
-
-# Next release
-- name: Install OpenJDK 13
-  aur:
-    name: "{{ item }}"
-  loop:
-    - java-openjdk-ea-bin
-  become: true
-  become_user: '{{ user.name }}'
-  tags:
-    - aur
     - java
 
 - name: Check current default JDK
