@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/JamieMagee/archsible.svg?branch=master)](https://travis-ci.org/JamieMagee/archsible)
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![Requirements Status](https://requires.io/github/JamieMagee/archsible/requirements.svg?branch=master)](https://requires.io/github/JamieMagee/archsible/requirements/?branch=master)
-[![Dependabot badge](https://img.shields.io/badge/Dependabot-enabled-blue.svg)](https://dependabot.com/)
 
 Archsible is a collection of [Ansible](https://www.ansible.com/) playbooks for [Arch Linux](https://www.archlinux.org/).
 
