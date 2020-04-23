@@ -1,22 +1,16 @@
 ---
 - name: Install k8s CLI tools
-  aur:
-    name: "{{ item }}"
-  become: true
-  become_user: "{{ user.name }}"
-  loop:
-    - kubectl-bin
-    - kubernetes-helm
-    - skaffold
-    - k9s-bin
-    - kubectx
-  tags:
-    - aur
+  pacman:
+    name:
+      - kubectl
+      - kubectx
+      - k9s
+      - helm
 
-- name: Install k3s
+- name: Install kind
   aur:
-    name: k3s-bin
+    name: kind
   become: true
-  become_user: "{{ user.name }}"
+  become_user: '{{ user.name }}'
   tags:
     - aur
