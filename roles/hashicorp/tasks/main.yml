@@ -3,22 +3,6 @@
   pacman:
     name: vagrant
 
-- name: Install consul
-  pacman:
-    name: consul
-
 - name: Install terraform
   pacman:
     name: terraform
-
-- name: Install vault
-  pacman:
-    name: vault
-
-- name: Install nomad
-  aur:
-    name: nomad
-  become: true
-  become_user: "{{ user.name }}"
-  tags:
-    - aur
