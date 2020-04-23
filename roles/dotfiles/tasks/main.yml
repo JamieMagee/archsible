@@ -9,7 +9,7 @@
 
 - name: Check if dotfiles already cloned
   stat:
-    path: "/home/{{ user.name }}/.yadm/repo.git"
+    path: "/home/{{ user.name }}/.config/yadm/repo.git"
   register: yadm_repo
 
 - name: Clone dotfiles repo
