@@ -13,7 +13,7 @@
 
 - name: Install Jetbrains Rider
   aur:
-    name: rider-eap
+    name: rider
   become: true
   become_user: "{{ user.name }}"
   tags:
