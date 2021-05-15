@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-ansible = "^2.8"
+ansible = "^3.4"
 asn1crypto = "^1.0.0"
 bcrypt = "^3.1"
 cffi = "^1.12"
