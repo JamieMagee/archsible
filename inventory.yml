@@ -3,3 +3,8 @@ all:
   hosts:
     localhost:
       ansible_connection: local
+    github-actions:
+      ansible_user: root
+      ansible_password: ''
+      ansible_port: 2121
+      ansible_host: 172.17.0.2

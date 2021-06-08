@@ -1,0 +1,20 @@
+---
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: docker.io/library/archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - run: |
+          pacman -Syu --noconfirm \
+            yamllint
+
+      - run: yamllint --format github .

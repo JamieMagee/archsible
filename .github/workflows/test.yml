@@ -1,0 +1,18 @@
+---
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.4
+
+      - run: >
+          docker build .github -t github-actions;
+          docker run -d github-actions;
+
+      - run: ANSIBLE_CONFIG=ansible.ci.cfg ansible-playbook --user root ./playbooks/github-actions.yml

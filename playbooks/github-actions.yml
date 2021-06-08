@@ -1,0 +1,5 @@
+---
+- hosts: github-actions
+  become: true
+  roles:
+    - { role: timezone, tags: ['timezone'] }
