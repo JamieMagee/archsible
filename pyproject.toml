@@ -24,7 +24,7 @@ six = "^1.12"
 
 [tool.poetry.dev-dependencies]
 yamllint = "^1.17"
-ansible-lint = "^4.1"
+ansible-lint = "^6.8"
 
 [build-system]
 requires = ["poetry>=0.12"]
